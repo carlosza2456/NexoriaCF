@@ -20,6 +20,10 @@ export async function GET() {
     if (!session) {
       return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3135e19f11caed1ff4a74a4642263c0541890125
     const services = await servicesApi.getAll();
     // Convertir los beneficios de string a array
     const formattedServices = services.map((service) => ({
@@ -43,6 +47,10 @@ export async function POST(request: Request) {
     if (!session) {
       return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3135e19f11caed1ff4a74a4642263c0541890125
     const data = await request.json();
     const { title, description, icon, benefits } = data;
     const service = await servicesApi.create({

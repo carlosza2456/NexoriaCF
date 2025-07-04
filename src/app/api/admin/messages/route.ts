@@ -13,9 +13,15 @@ export async function GET() {
     const messages = await messagesApi.getAll();
     return NextResponse.json(messages);
   } catch (error) {
+<<<<<<< HEAD
     console.error('Error al obtener mensajes:', error);
     return NextResponse.json(
       { error: 'No se pudieron obtener los mensajes.' },
+=======
+    console.error('Error al obtener los mensajes:', error);
+    return NextResponse.json(
+      { error: 'Error al obtener los mensajes' },
+>>>>>>> 3135e19f11caed1ff4a74a4642263c0541890125
       { status: 500 }
     );
   }

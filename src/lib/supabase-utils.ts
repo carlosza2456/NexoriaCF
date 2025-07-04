@@ -239,18 +239,6 @@ export const messagesApi = {
       .eq('id', id)
     
     if (error) throw error
-  },
-
-  async update(id: string, updates: Partial<Message>) {
-    const { data, error } = await supabase
-      .from('messages')
-      .update(updates)
-      .eq('id', id)
-      .select()
-      .single()
-    
-    if (error) throw error
-    return data as Message
   }
 }
 
