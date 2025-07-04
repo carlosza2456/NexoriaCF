@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { contactInfoApi } from '@/lib/supabase-utils';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const contactInfo = await contactInfoApi.get();
