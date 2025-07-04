@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-<<<<<<< HEAD
 import { contactInfoApi } from '@/lib/supabase-utils';
 
 export async function GET() {
@@ -13,11 +12,4 @@ export async function GET() {
       { status: 500 }
     );
   }
-=======
-import { prisma } from '@/lib/prisma';
-
-export async function GET() {
-  const info = await prisma.contactInfo.findUnique({ where: { id: 'main' } });
-  return NextResponse.json(info || {});
->>>>>>> 3135e19f11caed1ff4a74a4642263c0541890125
 } 

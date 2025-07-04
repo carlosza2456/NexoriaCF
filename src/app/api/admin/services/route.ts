@@ -1,72 +1,39 @@
 import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/authOptions';
 import { servicesApi } from '@/lib/supabase-utils';
 
-interface Service {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  benefits: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-// GET /api/admin/services
 export async function GET() {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session) {
-      return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
-    }
-<<<<<<< HEAD
-=======
-
->>>>>>> 3135e19f11caed1ff4a74a4642263c0541890125
     const services = await servicesApi.getAll();
     // Convertir los beneficios de string a array
     const formattedServices = services.map((service) => ({
       ...service,
-      benefits: service.benefits.split('|').filter(Boolean)
+      benefits: service.benefits.split('|'),
     }));
     return NextResponse.json(formattedServices);
   } catch (error) {
-    console.error('Error al obtener los servicios:', error);
+    console.error('Error al obtener servicios:', error);
     return NextResponse.json(
-      { error: 'Error al obtener los servicios' },
+      { error: 'No se pudieron obtener los servicios.' },
       { status: 500 }
     );
   }
 }
 
-// POST /api/admin/services
 export async function POST(request: Request) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session) {
-      return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
-    }
-<<<<<<< HEAD
-=======
-
->>>>>>> 3135e19f11caed1ff4a74a4642263c0541890125
     const data = await request.json();
     const { title, description, icon, benefits } = data;
     const service = await servicesApi.create({
       title,
       description,
       icon,
-      benefits: benefits.join('|')
+      benefits,
     });
-    return NextResponse.json({
-      ...service,
-      benefits: service.benefits.split('|').filter(Boolean)
-    });
+    return NextResponse.json(service, { status: 201 });
   } catch (error) {
-    console.error('Error al crear el servicio:', error);
+    console.error('Error al crear servicio:', error);
     return NextResponse.json(
-      { error: 'Error al crear el servicio' },
+      { error: 'No se pudo crear el servicio.' },
       { status: 500 }
     );
   }
@@ -75,10 +42,6 @@ export async function POST(request: Request) {
 // PUT /api/admin/services
 export async function PUT(request: Request) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session) {
-      return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
-    }
     const { services } = await request.json();
     // Eliminar todos los servicios existentes
     const all = await servicesApi.getAll();
@@ -112,10 +75,6 @@ export async function PUT(request: Request) {
 // DELETE /api/admin/services
 export async function DELETE(request: Request) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session) {
-      return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
-    }
     const { id } = await request.json();
     await servicesApi.delete(id);
     return NextResponse.json({ success: true });
