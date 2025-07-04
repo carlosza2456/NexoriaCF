@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { prisma } from '@/lib/prisma';
 import { authOptions } from '@/app/api/auth/authOptions';
+import { postsApi } from '@/lib/supabase-utils';
 
 // GET /api/admin/blog
 export async function GET() {
@@ -10,13 +10,7 @@ export async function GET() {
     if (!session) {
       return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
     }
-
-    const posts = await prisma.post.findMany({
-      orderBy: {
-        createdAt: 'desc'
-      }
-    });
-
+    const posts = await postsApi.getAll();
     return NextResponse.json(posts);
   } catch (error) {
     console.error('Error al obtener los posts:', error);
@@ -34,34 +28,25 @@ export async function POST(request: Request) {
     if (!session) {
       return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
     }
-
     const data = await request.json();
     const { title, content, excerpt, slug, image, category, published } = data;
-
     // Verificar si ya existe un post con el mismo slug
-    const existingPost = await prisma.post.findUnique({
-      where: { slug }
-    });
-
-    if (existingPost) {
+    const existing = await postsApi.getBySlug(slug).catch(() => null);
+    if (existing) {
       return NextResponse.json(
         { error: 'Ya existe un post con esta URL amigable' },
         { status: 400 }
       );
     }
-
-    const post = await prisma.post.create({
-      data: {
-        title,
-        content,
-        excerpt,
-        slug,
-        image,
-        category,
-        published
-      }
+    const post = await postsApi.create({
+      title,
+      content,
+      excerpt,
+      slug,
+      image,
+      category,
+      published
     });
-
     return NextResponse.json(post);
   } catch (error) {
     console.error('Error al crear el post:', error);
@@ -79,29 +64,24 @@ export async function PUT(request: Request) {
     if (!session) {
       return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
     }
-
     const { posts } = await request.json();
-
     // Eliminar todos los posts existentes
-    await prisma.post.deleteMany();
-
+    const all = await postsApi.getAll();
+    await Promise.all(all.map((p) => postsApi.delete(p.id)));
     // Crear los nuevos posts
     const createdPosts = await Promise.all(
       posts.map((post: any) =>
-        prisma.post.create({
-          data: {
-            title: post.title,
-            content: post.content,
-            excerpt: post.excerpt,
-            slug: post.slug,
-            image: post.image || null,
-            category: post.category,
-            published: post.published
-          }
+        postsApi.create({
+          title: post.title,
+          content: post.content,
+          excerpt: post.excerpt,
+          slug: post.slug,
+          image: post.image || null,
+          category: post.category,
+          published: post.published
         })
       )
     );
-
     return NextResponse.json(createdPosts);
   } catch (error) {
     console.error('Error al actualizar los posts:', error);
@@ -119,13 +99,8 @@ export async function DELETE(request: Request) {
     if (!session) {
       return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
     }
-
     const { id } = await request.json();
-
-    await prisma.post.delete({
-      where: { id }
-    });
-
+    await postsApi.delete(id);
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Error al eliminar el post:', error);

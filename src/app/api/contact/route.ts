@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import { messagesApi } from '@/lib/supabase-utils';
 
 export async function POST(request: Request) {
   try {
@@ -11,15 +11,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Nombre, email e interés son campos requeridos.' }, { status: 400 });
     }
 
-    const newMessage = await prisma.message.create({
-      data: {
-        name,
-        email,
-        phone,
-        company,
-        interest,
-        message,
-      },
+    const newMessage = await messagesApi.create({
+      name,
+      email,
+      phone,
+      company,
+      interest,
+      message,
+      read: false
     });
 
     return NextResponse.json(newMessage, { status: 201 });

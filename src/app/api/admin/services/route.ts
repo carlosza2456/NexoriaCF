@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { prisma } from '@/lib/prisma';
 import { authOptions } from '@/app/api/auth/authOptions';
+import { servicesApi } from '@/lib/supabase-utils';
 
 interface Service {
   id: string;
@@ -20,15 +20,12 @@ export async function GET() {
     if (!session) {
       return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
     }
-
-    const services = await prisma.service.findMany();
-    
+    const services = await servicesApi.getAll();
     // Convertir los beneficios de string a array
-    const formattedServices = services.map((service: Service) => ({
+    const formattedServices = services.map((service) => ({
       ...service,
       benefits: service.benefits.split('|').filter(Boolean)
     }));
-
     return NextResponse.json(formattedServices);
   } catch (error) {
     console.error('Error al obtener los servicios:', error);
@@ -46,19 +43,14 @@ export async function POST(request: Request) {
     if (!session) {
       return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
     }
-
     const data = await request.json();
     const { title, description, icon, benefits } = data;
-
-    const service = await prisma.service.create({
-      data: {
-        title,
-        description,
-        icon,
-        benefits: benefits.join('|') // Convertir array a string
-      }
+    const service = await servicesApi.create({
+      title,
+      description,
+      icon,
+      benefits: benefits.join('|')
     });
-
     return NextResponse.json({
       ...service,
       benefits: service.benefits.split('|').filter(Boolean)
@@ -79,32 +71,26 @@ export async function PUT(request: Request) {
     if (!session) {
       return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
     }
-
     const { services } = await request.json();
-
     // Eliminar todos los servicios existentes
-    await prisma.service.deleteMany();
-
+    const all = await servicesApi.getAll();
+    await Promise.all(all.map((s) => servicesApi.delete(s.id)));
     // Crear los nuevos servicios
     const createdServices = await Promise.all(
       services.map((service: { title: string; description: string; icon: string; benefits: string[] }) =>
-        prisma.service.create({
-          data: {
-            title: service.title,
-            description: service.description,
-            icon: service.icon,
-            benefits: service.benefits.join('|') // Convertir array a string
-          }
+        servicesApi.create({
+          title: service.title,
+          description: service.description,
+          icon: service.icon,
+          benefits: service.benefits.join('|')
         })
       )
     );
-
     // Convertir los beneficios de string a array en la respuesta
-    const formattedServices = createdServices.map((service: Service) => ({
+    const formattedServices = createdServices.map((service) => ({
       ...service,
       benefits: service.benefits.split('|').filter(Boolean)
     }));
-
     return NextResponse.json(formattedServices);
   } catch (error) {
     console.error('Error al actualizar los servicios:', error);
@@ -122,13 +108,8 @@ export async function DELETE(request: Request) {
     if (!session) {
       return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
     }
-
     const { id } = await request.json();
-
-    await prisma.service.delete({
-      where: { id }
-    });
-
+    await servicesApi.delete(id);
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Error al eliminar el servicio:', error);

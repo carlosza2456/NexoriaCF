@@ -1,4 +1,4 @@
-// File: C:\Users\lenovo\OneDrive - Cantarell Systems S.A.P.I DE C.V\Escritorio\nexoria\src\app\api\contact\route.ts
+// File: C:\Users\lenovo\OneDrive - Cantarell Systems S.A.P.I DE C.V\Escritorio\nexoria-main\src\app\api\contact\route.ts
 import * as entry from '../../../../../src/app/api/contact/route.js'
 import type { NextRequest } from 'next/server.js'
 

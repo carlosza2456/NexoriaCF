@@ -1,4 +1,4 @@
-// File: C:\Users\lenovo\OneDrive - Cantarell Systems S.A.P.I DE C.V\Escritorio\nexoria\src\app\(main)\page.tsx
+// File: C:\Users\lenovo\OneDrive - Cantarell Systems S.A.P.I DE C.V\Escritorio\nexoria-main\src\app\(main)\page.tsx
 import * as entry from '../../../../src/app/(main)/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

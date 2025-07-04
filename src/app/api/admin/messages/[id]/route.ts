@@ -1,32 +1,21 @@
-import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { prisma } from '@/lib/prisma';
-import { authOptions } from '@/app/api/auth/authOptions';
+import { NextRequest, NextResponse } from 'next/server';
+import { messagesApi } from '@/lib/supabase-utils';
 
 // PUT /api/admin/messages/[id]
 export async function PUT(
-  request: Request,
+  request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session) {
-      return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
-    }
-
+    const { id } = params;
     const data = await request.json();
-    const { read } = data;
-
-    const message = await prisma.message.update({
-      where: { id: params.id },
-      data: { read }
-    });
-
-    return NextResponse.json(message);
+    
+    const updatedMessage = await messagesApi.update(id, data);
+    return NextResponse.json(updatedMessage);
   } catch (error) {
-    console.error('Error al actualizar el mensaje:', error);
+    console.error('Error al actualizar mensaje:', error);
     return NextResponse.json(
-      { error: 'Error al actualizar el mensaje' },
+      { error: 'No se pudo actualizar el mensaje.' },
       { status: 500 }
     );
   }
@@ -34,24 +23,17 @@ export async function PUT(
 
 // DELETE /api/admin/messages/[id]
 export async function DELETE(
-  request: Request,
+  request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session) {
-      return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
-    }
-
-    await prisma.message.delete({
-      where: { id: params.id }
-    });
-
-    return NextResponse.json({ success: true });
+    const { id } = params;
+    await messagesApi.delete(id);
+    return NextResponse.json({ message: 'Mensaje eliminado correctamente' });
   } catch (error) {
-    console.error('Error al eliminar el mensaje:', error);
+    console.error('Error al eliminar mensaje:', error);
     return NextResponse.json(
-      { error: 'Error al eliminar el mensaje' },
+      { error: 'No se pudo eliminar el mensaje.' },
       { status: 500 }
     );
   }

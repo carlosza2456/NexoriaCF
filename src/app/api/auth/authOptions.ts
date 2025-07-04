@@ -1,7 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { prisma } from "@/lib/prisma";
+import { supabase } from "@/lib/supabase";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -18,18 +18,18 @@ export const authOptions: NextAuthOptions = {
         }
 
         try {
-          const user = await prisma.user.findUnique({
-            where: {
-              email: credentials.email
-            }
-          });
+          const { data: user, error } = await supabase
+            .from('users')
+            .select('*')
+            .eq('email', credentials.email)
+            .single();
 
-          console.log('Usuario encontrado:', user);
-
-          if (!user) {
+          if (error || !user) {
             console.log('Usuario no encontrado');
             return null;
           }
+
+          console.log('Usuario encontrado:', user);
 
           const isPasswordValid = await bcrypt.compare(credentials.password, user.password);
           console.log('¿Contraseña válida?:', isPasswordValid);
