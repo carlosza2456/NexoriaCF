@@ -11,6 +11,7 @@ interface ContactInfo {
   horario?: string;
   whatsapp?: string;
   telegram?: string;
+  linkedin?: string;
   facebook?: string;
   twitter?: string;
   instagram?: string;
@@ -43,7 +44,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
             <Link href="/" className="text-2xl font-bold text-nexoria-white">
-              Nexoria
+              Nexoria Consulting Firm
             </Link>
             <p className="mt-4 text-gray-400 md:max-w-md">
               Consultoría empresarial con visión de futuro. Transformamos desafíos en oportunidades.
@@ -96,7 +97,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
-          <p>&copy; {currentYear} Nexoria. Todos los derechos reservados.</p>
+          <p>&copy; {currentYear} Nexoria Consulting Firm. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

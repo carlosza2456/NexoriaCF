@@ -1,136 +1,142 @@
 # Configuración de Supabase para Nexoria
 
-## 🚀 Pasos para conectar tu aplicación con Supabase
+## 1. Crear proyecto en Supabase
 
-### 1. Configurar Variables de Entorno
+1. Ve a [supabase.com](https://supabase.com)
+2. Crea una cuenta o inicia sesión
+3. Crea un nuevo proyecto
+4. Anota la URL del proyecto y la anon key
 
-Crea un archivo `.env.local` en la raíz del proyecto con las siguientes variables:
+## 2. Configurar variables de entorno
 
-```env
-# Supabase Configuration
-NEXT_PUBLIC_SUPABASE_URL=tu_url_de_supabase_aqui
-NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_clave_anonima_de_supabase_aqui
-
-# NextAuth Configuration
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=tu_secreto_de_nextauth_aqui
-
-# Opcional: Forzar uso de Supabase en desarrollo
-FORCE_SUPABASE=true
-```
-
-### 2. Obtener Credenciales de Supabase
-
-1. Ve a tu proyecto en [Supabase Dashboard](https://supabase.com/dashboard)
-2. Ve a **Settings > API**
-3. Copia la **Project URL** y **anon public** key
-4. Pega estos valores en tu archivo `.env.local`
-
-### 3. Crear las Tablas en Supabase
-
-1. Ve a **SQL Editor** en tu dashboard de Supabase
-2. Copia y ejecuta el contenido del archivo `supabase-schema.sql`
-3. Esto creará todas las tablas necesarias con los índices y triggers apropiados
-
-### 4. Migrar Datos Existentes (Opcional)
-
-Si tienes datos en tu base de datos SQLite local que quieres migrar:
+Crea un archivo `.env.local` en la raíz del proyecto con:
 
 ```bash
-npm run migrate:supabase
+NEXT_PUBLIC_SUPABASE_URL=https://tu-proyecto.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_anon_key_aqui
 ```
 
-### 5. Configurar NextAuth para Supabase
+## 3. Crear las tablas en Supabase
 
-Para usar Supabase en lugar de Prisma para autenticación:
-
-1. Renombra `src/app/api/auth/authOptions.ts` a `authOptions-prisma.ts`
-2. Renombra `src/app/api/auth/authOptions-supabase.ts` a `authOptions.ts`
-3. Actualiza las importaciones en `src/app/api/auth/[...nextauth]/route.ts`
-
-### 6. Usar las Utilidades de Supabase
-
-```typescript
-import { servicesApi, postsApi, messagesApi } from '@/lib/supabase-utils'
-
-// Ejemplo de uso
-const services = await servicesApi.getAll()
-const posts = await postsApi.getPublished()
-const unreadMessages = await messagesApi.getUnread()
-```
-
-## 📁 Archivos Creados/Modificados
-
-- `src/lib/supabase.ts` - Cliente de Supabase
-- `src/lib/supabase-utils.ts` - Utilidades para trabajar con Supabase
-- `src/lib/config.ts` - Configuración de entornos
-- `supabase-schema.sql` - Esquema de base de datos
-- `scripts/migrate-to-supabase.js` - Script de migración
-- `SUPABASE_SETUP.md` - Esta documentación
-
-## 🔄 Migración Gradual
-
-Puedes migrar gradualmente de Prisma a Supabase:
-
-1. **Desarrollo**: Usa Prisma/SQLite
-2. **Producción**: Usa Supabase
-3. **Forzar Supabase**: Establece `FORCE_SUPABASE=true` en `.env.local`
-
-## 🛠️ Comandos Útiles
-
-```bash
-# Migrar datos a Supabase
-npm run migrate:supabase
-
-# Verificar configuración
-npm run dev
-
-# Construir para producción
-npm run build
-```
-
-## 🔒 Configuración de Seguridad
-
-### Row Level Security (RLS)
-
-Para mayor seguridad, puedes habilitar RLS en Supabase:
-
+### Tabla: contact_info
 ```sql
--- Ejemplo para la tabla users
-ALTER TABLE users ENABLE ROW LEVEL SECURITY;
+CREATE TABLE contact_info (
+  id TEXT PRIMARY KEY DEFAULT 'main',
+  direccion TEXT NOT NULL,
+  telefono TEXT NOT NULL,
+  correo TEXT NOT NULL,
+  horario TEXT NOT NULL,
+  whatsapp TEXT,
+  telegram TEXT,
+  linkedin TEXT,
+  facebook TEXT,
+  twitter TEXT,
+  instagram TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL
+);
 
--- Política para usuarios autenticados
-CREATE POLICY "Users can view own profile" ON users
-  FOR SELECT USING (auth.uid()::text = id);
+-- Insertar datos de ejemplo
+INSERT INTO contact_info (id, direccion, telefono, correo, horario) VALUES 
+('main', 'Av. Insurgentes Sur 123, CDMX', '+52 55 1234-5678', 'contacto@nexoria.com', 'Lun-Vie 9:00-18:00');
 ```
 
-### Variables de Entorno en Producción
+### Tabla: messages
+```sql
+CREATE TABLE messages (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  phone TEXT,
+  company TEXT,
+  interest TEXT NOT NULL,
+  message TEXT,
+  read BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL
+);
+```
 
-Asegúrate de configurar las variables de entorno en tu plataforma de despliegue:
+### Tabla: services
+```sql
+CREATE TABLE services (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  title TEXT NOT NULL,
+  description TEXT NOT NULL,
+  icon TEXT NOT NULL,
+  benefits TEXT NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL
+);
+```
 
-- **Vercel**: Ve a Settings > Environment Variables
-- **Netlify**: Ve a Site Settings > Environment Variables
-- **Railway**: Ve a Variables
+## 4. Configurar políticas de seguridad (RLS)
 
-## 🐛 Solución de Problemas
+### Para contact_info:
+```sql
+ALTER TABLE contact_info ENABLE ROW LEVEL SECURITY;
 
-### Error: "Missing environment variables"
-- Verifica que `.env.local` existe y tiene las variables correctas
-- Reinicia el servidor de desarrollo después de crear el archivo
+-- Permitir lectura pública
+CREATE POLICY "Allow public read access" ON contact_info
+  FOR SELECT USING (true);
+
+-- Permitir actualización solo a usuarios autenticados
+CREATE POLICY "Allow authenticated update" ON contact_info
+  FOR UPDATE USING (auth.role() = 'authenticated');
+```
+
+### Para messages:
+```sql
+ALTER TABLE messages ENABLE ROW LEVEL SECURITY;
+
+-- Permitir inserción pública
+CREATE POLICY "Allow public insert" ON messages
+  FOR INSERT WITH CHECK (true);
+
+-- Permitir lectura solo a usuarios autenticados
+CREATE POLICY "Allow authenticated read" ON messages
+  FOR SELECT USING (auth.role() = 'authenticated');
+```
+
+### Para services:
+```sql
+ALTER TABLE services ENABLE ROW LEVEL SECURITY;
+
+-- Permitir lectura pública
+CREATE POLICY "Allow public read access" ON services
+  FOR SELECT USING (true);
+
+-- Permitir operaciones CRUD solo a usuarios autenticados
+CREATE POLICY "Allow authenticated all" ON services
+  FOR ALL USING (auth.role() = 'authenticated');
+```
+
+## 5. Verificar la conexión
+
+1. Reinicia el servidor de desarrollo
+2. Abre la consola del navegador
+3. Envía un formulario de contacto
+4. Verifica que no haya errores de conexión
+
+## 6. Solución de problemas comunes
 
 ### Error: "Invalid API key"
-- Verifica que la URL y clave de Supabase son correctas
-- Asegúrate de usar la clave "anon public", no la "service_role"
+- Verifica que la anon key esté correcta
+- Asegúrate de que el proyecto esté activo
 
 ### Error: "Table does not exist"
-- Ejecuta el script SQL en Supabase SQL Editor
-- Verifica que las tablas se crearon correctamente
+- Verifica que las tablas estén creadas
+- Revisa los nombres de las tablas en el código
 
-## 📞 Soporte
+### Error: "RLS policy violation"
+- Verifica que las políticas de seguridad estén configuradas
+- Asegúrate de que los permisos sean correctos
 
-Si tienes problemas con la configuración:
+## 7. Datos de prueba
 
-1. Verifica que todas las variables de entorno están configuradas
-2. Asegúrate de que el esquema SQL se ejecutó correctamente
-3. Revisa los logs del servidor para errores específicos
-4. Verifica la conectividad con Supabase desde el dashboard 
+Para probar el sistema, puedes insertar algunos servicios de ejemplo:
+
+```sql
+INSERT INTO services (title, description, icon, benefits) VALUES 
+('Derecho Civil', 'Contratos, arrendamientos, demandas y resolución de conflictos civiles.', '⚖️', 'Contratos personalizados|Resolución de conflictos|Asesoría en arrendamientos|Demandas civiles'),
+('Derecho Penal', 'Defensa penal, delitos, denuncias y asesoría en procesos penales.', '🛡️', 'Defensa penal integral|Asesoría en denuncias|Recursos de apelación|Libertad bajo caución');
+``` 

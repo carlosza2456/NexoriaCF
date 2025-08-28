@@ -1,5 +1,9 @@
 {
-  "/api/contact-info/route": "app/api/contact-info/route.js",
+  "/not-found": "app/not-found.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/(main)/page": "app/(main)/page.js"
+  "/api/contact-info/route": "app/api/contact-info/route.js",
+  "/(main)/page": "app/(main)/page.js",
+  "/(main)/blog/page": "app/(main)/blog/page.js",
+  "/admin/dashboard/page": "app/admin/dashboard/page.js",
+  "/admin/login/page": "app/admin/login/page.js"
 }

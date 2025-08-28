@@ -26,56 +26,54 @@ const Header = () => {
 
   return (
     <header className="fixed w-full bg-[#181818] z-50 font-sans" style={{fontFamily: 'var(--font-inter)'}}>
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-2">
-        <div className="flex items-center justify-between h-14">
-          {/* Logo como imagen expandida y estética */}
-          <Link href="/" className="flex items-center py-2 select-none mr-6" onClick={closeMenu}>
-            <Image
-              src="/logo_header.png"
-              alt="Nexoria Logo"
-              width={600}
-              height={120}
-              priority
-              className="object-contain w-[600px] h-[120px] drop-shadow-lg"
+      <div className="flex items-center justify-between h-16 px-6 md:px-12">
+        {/* Logo como imagen expandida y estética - sin margen izquierdo */}
+        <Link href="/" className="flex items-center py-2 select-none" onClick={closeMenu}>
+          <Image
+            src="/logo_header.png"
+            alt="Nexoria Logo"
+            width={600}
+            height={120}
+            priority
+            className="object-contain w-[600px] h-[120px] drop-shadow-lg"
+          />
+        </Link>
+        {/* Menú de escritorio - con padding derecho y espacio del logo */}
+        <nav className="hidden md:flex items-center space-x-10 pr-6 md:pr-12 ml-8">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-white text-base font-medium hover:text-[#FF6F00] transition-colors"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        {/* Botón de menú hamburguesa - visible solo en móvil */}
+        <button
+          className="md:hidden text-white p-2 focus:outline-none"
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          <div className="w-6 h-5 relative flex flex-col justify-between">
+            <span 
+              className={`w-full h-0.5 bg-current transform transition-all duration-300 ${
+                isMenuOpen ? 'rotate-45 translate-y-2' : ''
+              }`}
             />
-          </Link>
-          {/* Menú de escritorio */}
-          <nav className="hidden md:flex items-center space-x-10 ml-auto">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-white text-base font-medium hover:text-[#FF6F00] transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-          {/* Botón de menú hamburguesa - visible solo en móvil */}
-          <button
-            className="md:hidden text-white p-2 focus:outline-none"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            <div className="w-6 h-5 relative flex flex-col justify-between">
-              <span 
-                className={`w-full h-0.5 bg-current transform transition-all duration-300 ${
-                  isMenuOpen ? 'rotate-45 translate-y-2' : ''
-                }`}
-              />
-              <span 
-                className={`w-full h-0.5 bg-current transition-all duration-300 ${
-                  isMenuOpen ? 'opacity-0' : ''
-                }`}
-              />
-              <span 
-                className={`w-full h-0.5 bg-current transform transition-all duration-300 ${
-                  isMenuOpen ? '-rotate-45 -translate-y-2' : ''
-                }`}
-              />
-            </div>
-          </button>
-        </div>
+            <span 
+              className={`w-full h-0.5 bg-current transition-all duration-300 ${
+                isMenuOpen ? 'opacity-0' : ''
+              }`}
+            />
+            <span 
+              className={`w-full h-0.5 bg-current transform transition-all duration-300 ${
+                isMenuOpen ? '-rotate-45 -translate-y-2' : ''
+              }`}
+            />
+          </div>
+        </button>
       </div>
 
       {/* Menú móvil */}

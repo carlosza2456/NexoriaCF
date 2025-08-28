@@ -6,67 +6,89 @@ import { useState, useEffect } from 'react';
 import ContactForm from './ContactForm';
 
 export default function Home() {
-  const services = [
+  const servicios = [
     {
-      title: 'Estrategia de Negocios',
-      description: 'Desarrollamos estrategias personalizadas para impulsar el crecimiento y la rentabilidad de tu empresa.',
-      icon: '🎯'
+      title: 'Derecho Civil',
+      description: 'Contratos, arrendamientos, demandas y resolución de conflictos civiles.',
+      icon: '⚖️',
+      url: '/servicios/derecho-civil'
     },
     {
-      title: 'Transformación Digital',
-      description: 'Implementamos soluciones tecnológicas innovadoras para modernizar y optimizar tus procesos.',
-      icon: '💻'
+      title: 'Derecho Penal',
+      description: 'Defensa penal, delitos, denuncias y asesoría en procesos penales.',
+      icon: '🛡️',
+      url: '/servicios/derecho-penal'
     },
     {
-      title: 'Finanzas Corporativas',
-      description: 'Optimizamos la gestión financiera y desarrollamos estrategias para maximizar el valor de tu empresa.',
-      icon: '📊'
+      title: 'Derecho Laboral',
+      description: 'Despidos, conflictos obrero-patronales y asesoría laboral integral.',
+      icon: '👥',
+      url: '/servicios/derecho-laboral'
     },
     {
-      title: 'Capital Humano',
-      description: 'Potenciamos el talento de tu organización mediante estrategias efectivas de gestión y desarrollo.',
-      icon: '👥'
+      title: 'Derecho Mercantil',
+      description: 'Sociedades, cobranza, juicios mercantiles y derecho comercial.',
+      icon: '🏢',
+      url: '/servicios/derecho-mercantil'
+    },
+    {
+      title: 'Derecho Familiar',
+      description: 'Divorcios, pensiones, custodia y asuntos familiares.',
+      icon: '👨‍👩‍👧‍👦',
+      url: '/servicios/derecho-familiar'
+    },
+    {
+      title: 'Derecho Corporativo',
+      description: 'Constitución, compliance, marcas y asesoría corporativa.',
+      icon: '🎯',
+      url: '/servicios/derecho-corporativo'
     }
   ];
 
-  const team = [
+  const testimonios = [
     {
-      name: 'Ana García',
-      position: 'CEO & Fundadora',
-      image: '/team/ana.jpg'
+      nombre: 'María González',
+      opinion: 'Me ayudaron con mi despido injustificado. En solo 3 semanas lograron que me dieran una indemnización justa. El abogado fue muy profesional y me explicó todo el proceso paso a paso.',
+      empresa: 'Restaurante La Esquina',
+      estrellas: 5,
+      fecha: 'Hace 2 meses',
+      servicio: 'Derecho Laboral'
     },
     {
-      name: 'Carlos Rodríguez',
-      position: 'Director de Estrategia',
-      image: '/team/carlos.jpg'
+      nombre: 'Carlos Rodríguez',
+      opinion: 'Necesitaba constituir mi empresa de consultoría y no sabía por dónde empezar. Nexoria me guió en todo el proceso, desde la elección del tipo de sociedad hasta los permisos municipales. Excelente trabajo.',
+      empresa: 'Consultores RRH',
+      estrellas: 4,
+      fecha: 'Hace 1 mes',
+      servicio: 'Derecho Corporativo'
     },
     {
-      name: 'María Sánchez',
-      position: 'Directora de Innovación',
-      image: '/team/maria.jpg'
+      nombre: 'Ana López',
+      opinion: 'Mi divorcio fue complicado por temas de custodia. Los abogados de Nexoria fueron muy empáticos y lograron un acuerdo que beneficiaba a mis hijos. Definitivamente los recomiendo.',
+      empresa: 'Particular',
+      estrellas: 5,
+      fecha: 'Hace 3 meses',
+      servicio: 'Derecho Familiar'
+    },
+    {
+      nombre: 'Roberto Martínez',
+      opinion: 'Tenía un problema con un contrato de arrendamiento comercial. Me cobraban más de lo acordado. Nexoria revisó todo y logró que me devolvieran el dinero extra. Muy agradecido.',
+      empresa: 'Farmacia San José',
+      estrellas: 4,
+      fecha: 'Hace 1 mes',
+      servicio: 'Derecho Civil'
+    },
+    {
+      nombre: 'Patricia Sánchez',
+      opinion: 'Me ayudaron a registrar mi marca de ropa. El proceso fue rápido y ahora tengo la tranquilidad de que mi negocio está protegido legalmente. Muy profesionales.',
+      empresa: 'Boutique Elegance',
+      estrellas: 5,
+      fecha: 'Hace 2 semanas',
+      servicio: 'Propiedad Intelectual'
     }
   ];
 
-  const blogPosts = [
-    {
-      title: 'El futuro de la transformación digital',
-      excerpt: 'Descubre las tendencias tecnológicas que definirán el futuro de los negocios...',
-      image: '/blog/post1.jpg',
-      slug: 'futuro-transformacion-digital'
-    },
-    {
-      title: 'Estrategias de liderazgo post-pandemia',
-      excerpt: 'Nuevos enfoques para liderar equipos en la era del trabajo híbrido...',
-      image: '/blog/post2.jpg',
-      slug: 'liderazgo-post-pandemia'
-    },
-    {
-      title: 'Innovación sostenible en empresas',
-      excerpt: 'Cómo implementar prácticas sostenibles sin sacrificar la rentabilidad...',
-      image: '/blog/post3.jpg',
-      slug: 'innovacion-sostenible'
-    }
-  ];
+
 
   const [contactInfo, setContactInfo] = useState<any>(null);
   useEffect(() => {
@@ -84,850 +106,473 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-nexoria-black">
-      {/* Hero Section */}
-      <section className="min-h-screen flex flex-col justify-center items-center px-4 bg-[#1a1d21] pt-24">
-        <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12 py-8 md:py-16">
-          {/* Columna izquierda: texto */}
-        <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-            className="flex-1 text-left"
-        >
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-4 md:mb-6 leading-tight font-sans" style={{fontFamily: 'var(--font-inter)'}}>
-              <span className="text-[#FF6F00]">NEXORIA</span>
-              <span className="text-white"> – Soluciones Integrales para Empresas Modernas</span>
-          </h1>
-            <p className="text-base md:text-lg lg:text-xl text-gray-300 mb-6 md:mb-8 max-w-2xl font-sans" style={{fontFamily: 'var(--font-inter)'}}>
-              Combinamos derecho, logística, estrategia empresarial, marketing digital y tecnología basada en inteligencia artificial para impulsar su negocio.
-          </p>
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-            <Link
-                href="#servicios"
-                className="bg-[#FF6F00] text-white px-6 md:px-8 py-3 rounded-md text-base md:text-lg font-semibold hover:bg-orange-700 transition-all text-center font-sans"
-            >
-                Explorar Servicios
-            </Link>
-            <Link
-                href="#contacto"
-                className="border-2 border-white text-white px-6 md:px-8 py-3 rounded-md text-base md:text-lg font-semibold hover:bg-white hover:text-[#FF6F00] transition-all text-center font-sans"
-            >
-                Contactar Ahora
-            </Link>
-          </div>
-        </motion.div>
-          {/* Columna derecha: círculo naranja */}
+    <div className="bg-black">
+      {/* Hero Principal - Pantalla completa */}
+      <section className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 md:px-8 lg:px-16 bg-black pt-20 sm:pt-24 relative overflow-hidden">
+        {/* Fondo con efecto CDMX y gradientes */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-95"></div>
+        <div className="absolute inset-0 bg-[url('/cdmx-bg.jpg')] bg-cover bg-center opacity-10"></div>
+        
+        {/* Elementos decorativos de fondo - Responsive */}
+        <div className="absolute top-16 sm:top-20 left-4 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-gradient-to-r from-[#FF6A00] to-orange-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-16 sm:bottom-20 right-4 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-l from-blue-600 to-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{animationDelay: '2s'}}></div>
+        
+        <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex-1 flex justify-center items-center w-full"
+            className="mb-6 sm:mb-8"
           >
-            <div
-              className="bg-[#FF6F00] rounded-full flex flex-col items-center justify-center shadow-lg w-40 h-32 sm:w-56 sm:h-44 md:w-72 md:h-60 lg:w-[380px] lg:h-[320px] transition-all duration-300"
+            <span className="inline-block bg-gradient-to-r from-[#FF6A00] to-orange-500 text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full text-xs sm:text-sm font-semibold mb-6 sm:mb-8 shadow-2xl shadow-orange-500/25">
+              ⚖️ N°1 Consultora Especializada en Estado de México y CDMX
+            </span>
+          </motion.div>
+          
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black text-white mb-6 sm:mb-8 leading-tight px-2"
+          >
+            <span className="text-white">
+              Tu aliado legal en
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-[#FF6A00] via-orange-500 to-yellow-500 bg-clip-text text-transparent">
+              Estado de México
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-[#FF6A00] via-orange-500 to-yellow-500 bg-clip-text text-transparent">
+              y Ciudad de México
+            </span>
+          </motion.h1>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed font-light px-4"
+          >
+            Asesoría especializada para personas, empresas y emprendedores con la más alta calidad profesional
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4"
+          >
+            <Link
+              href="#contacto"
+              className="group relative bg-gradient-to-r from-[#FF6A00] to-orange-500 text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 rounded-2xl text-base sm:text-lg font-bold hover:from-orange-500 hover:to-[#FF6A00] transition-all duration-500 transform hover:scale-110 hover:shadow-2xl hover:shadow-orange-500/50 hover:-translate-y-2"
             >
-              {/* Icono de cerebro (SVG realista) */}
-              <svg
-                className="mb-2 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
-                viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M32 8C23 8 16 15 16 24V40C16 49 23 56 32 56C41 56 48 49 48 40V24C48 15 41 8 32 8Z" fill="white"/>
-                <path d="M24 24C24 19.58 27.58 16 32 16C36.42 16 40 19.58 40 24V40C40 44.42 36.42 48 32 48C27.58 48 24 44.42 24 40V24Z" fill="#FF6F00"/>
-                <path d="M32 8V56" stroke="#FF6F00" strokeWidth="2" strokeLinecap="round"/>
-                <path d="M24 16C20 20 20 44 24 48" stroke="#FF6F00" strokeWidth="2" strokeLinecap="round"/>
-                <path d="M40 16C44 20 44 44 40 48" stroke="#FF6F00" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
-              <span className="text-white text-base sm:text-lg md:text-xl font-bold text-center font-sans" style={{fontFamily: 'var(--font-inter)'}}>Inteligencia Estratégica</span>
-            </div>
+              <span className="relative z-10">Solicita una consulta gratis</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-[#FF6A00] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </Link>
+            <Link
+              href="#servicios"
+              className="group relative border-2 border-white/30 text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 rounded-2xl text-base sm:text-lg font-bold hover:bg-white hover:text-black transition-all duration-500 transform hover:scale-110 backdrop-blur-sm bg-white/10 hover:shadow-2xl hover:shadow-white/25 hover:-translate-y-2"
+            >
+              Conoce nuestros servicios
+            </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* ¿Quiénes Somos? */}
-      <section id="quienes-somos" className="w-full bg-white py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col items-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 text-center mb-2 relative">
-              ¿Quiénes Somos?
-              <span className="block mx-auto mt-2 w-24 h-1 bg-[#FF6F00] rounded"></span>
-            </h2>
-          </div>
-          <div className="flex flex-col lg:flex-row gap-10 items-stretch justify-center">
-            {/* Columna izquierda */}
-            <div className="flex-1 flex flex-col justify-center">
-              <p className="text-lg text-gray-800 mb-6 text-center lg:text-left">Somos un equipo de expertos en distintas disciplinas que trabaja de manera coordinada para ofrecer asesoría integral a empresas de todos los tamaños y sectores.</p>
-              <p className="text-lg text-gray-800 mb-8 text-center lg:text-left">Nuestra filosofía se basa en cuatro pilares fundamentales:</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Ojo - Transparencia */}
-                <div className="bg-gray-100 rounded-lg p-6 flex flex-col items-center transition-colors duration-200 hover:bg-[#FF6F00] group cursor-pointer relative overflow-hidden">
-                  <span className="text-3xl mb-2 transition-all duration-300 group-hover:opacity-0 group-hover:scale-90 group-hover:translate-y-2 text-black">
-                    <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
-                  </span>
-                  <span className="font-bold text-lg text-gray-900 transition-all duration-300 group-hover:opacity-0 group-hover:scale-90 group-hover:translate-y-2">Transparencia</span>
-                  {/* Texto explicativo hover */}
-                  <span className="absolute left-0 right-0 top-1/3 -translate-y-1/2 px-4 text-base text-white opacity-0 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 scale-90 translate-y-2 transition-all duration-300 text-center pointer-events-none select-none font-semibold">
-                    Comunicación clara y acceso a la información relevante.
-                  </span>
-                </div>
-                {/* Manos estrechadas - Confianza */}
-                <div className="bg-gray-100 rounded-lg p-6 flex flex-col items-center transition-colors duration-200 hover:bg-[#FF6F00] group cursor-pointer relative overflow-hidden">
-                  <span className="text-3xl mb-2 transition-all duration-300 group-hover:opacity-0 group-hover:scale-90 group-hover:translate-y-2 text-black">
-                    <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path d="M17 18l1.5-1.5a2.121 2.121 0 0 0 0-3l-5-5a2.121 2.121 0 0 0-3 0l-5 5a2.121 2.121 0 0 0 0 3L7 18" />
-                      <path d="M9 13l3 3 3-3" />
-                    </svg>
-                  </span>
-                  <span className="font-bold text-lg text-gray-900 transition-all duration-300 group-hover:opacity-0 group-hover:scale-90 group-hover:translate-y-2">Confianza</span>
-                  <span className="absolute left-0 right-0 top-1/3 -translate-y-1/2 px-4 text-base text-white opacity-0 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 scale-90 translate-y-2 transition-all duration-300 text-center pointer-events-none select-none font-semibold">
-                    Relaciones sólidas y compromiso con nuestros clientes.
-                  </span>
-                </div>
-                {/* Foco - Innovación */}
-                <div className="bg-gray-100 rounded-lg p-6 flex flex-col items-center transition-colors duration-200 hover:bg-[#FF6F00] group cursor-pointer relative overflow-hidden">
-                  <span className="text-3xl mb-2 transition-all duration-300 group-hover:opacity-0 group-hover:scale-90 group-hover:translate-y-2 text-black">
-                    <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path d="M9 18h6" />
-                      <path d="M10 22h4" />
-                      <path d="M12 2a7 7 0 0 1 7 7c0 2.5-1.5 4.5-3.5 6.5a2 2 0 0 1-3 0C6.5 13.5 5 11.5 5 9a7 7 0 0 1 7-7z" />
-                    </svg>
-                  </span>
-                  <span className="font-bold text-lg text-gray-900 transition-all duration-300 group-hover:opacity-0 group-hover:scale-90 group-hover:translate-y-2">Innovación</span>
-                  <span className="absolute left-0 right-0 top-1/3 -translate-y-1/2 px-4 text-base text-white opacity-0 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 scale-90 translate-y-2 transition-all duration-300 text-center pointer-events-none select-none font-semibold">
-                    Soluciones creativas y uso de tecnología de vanguardia.
-                  </span>
-                </div>
-                {/* Gráfica - Resultados */}
-                <div className="bg-gray-100 rounded-lg p-6 flex flex-col items-center transition-colors duration-200 hover:bg-[#FF6F00] group cursor-pointer relative overflow-hidden">
-                  <span className="text-3xl mb-2 transition-all duration-300 group-hover:opacity-0 group-hover:scale-90 group-hover:translate-y-2 text-black">
-                    <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path d="M3 17v-2a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v2" />
-                      <rect x="13" y="13" width="6" height="8" rx="2" />
-                      <rect x="3" y="13" width="6" height="8" rx="2" />
-                    </svg>
-                  </span>
-                  <span className="font-bold text-lg text-gray-900 transition-all duration-300 group-hover:opacity-0 group-hover:scale-90 group-hover:translate-y-2">Resultados</span>
-                  <span className="absolute left-0 right-0 top-1/3 -translate-y-1/2 px-4 text-base text-white opacity-0 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 scale-90 translate-y-2 transition-all duration-300 text-center pointer-events-none select-none font-semibold">
-                    Logros medibles y beneficios tangibles para tu empresa.
-                  </span>
-                </div>
-              </div>
-            </div>
-            {/* Columna derecha */}
-            <div className="flex-1 bg-gray-50 rounded-2xl shadow p-8 flex flex-col justify-center">
-              <h3 className="text-2xl font-extrabold text-[#FF6F00] mb-4">Nuestra Visión</h3>
-              <p className="text-gray-800 mb-6">Creemos en la inteligencia estratégica, el respaldo legal sólido y el uso de tecnologías emergentes como la IA para resolver desafíos reales.</p>
-              <div className="space-y-6">
-                {/* Balanza - Respaldo Legal */}
-                <div className="flex items-start gap-4">
-                  <span className="bg-[#FF6F00] rounded-full p-2 flex items-center justify-center">
-                    <svg width="24" height="24" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24">
-                      <path d="M12 3v2" />
-                      <path d="M6 5l6 1 6-1" />
-                      <path d="M6 5v2a6 6 0 0 0 12 0V5" />
-                      <path d="M6 17a6 6 0 0 0 12 0" />
-                      <path d="M6 17v2a6 6 0 0 0 12 0v-2" />
-                    </svg>
-                  </span>
-                  <div>
-                    <span className="font-bold text-gray-900">Respaldo Legal</span>
-                    <p className="text-gray-700 text-sm">Seguridad jurídica para su empresa</p>
-                  </div>
-                </div>
-                {/* Tuercas - Optimización Operativa */}
-                <div className="flex items-start gap-4">
-                  <span className="bg-[#FF6F00] rounded-full p-2 flex items-center justify-center">
-                    <svg width="24" height="24" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="3" />
-                      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 8.6 15a1.65 1.65 0 0 0-1.82-.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 15 8.6a1.65 1.65 0 0 0 1.82.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 15z" />
-                    </svg>
-                  </span>
-                  <div>
-                    <span className="font-bold text-gray-900">Optimización Operativa</span>
-                    <p className="text-gray-700 text-sm">Procesos eficientes y rentables</p>
-                  </div>
-                </div>
-                {/* Robot - Tecnología Avanzada */}
-                <div className="flex items-start gap-4">
-                  <span className="bg-[#FF6F00] rounded-full p-2 flex items-center justify-center">
-                    <svg width="24" height="24" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24">
-                      <rect x="3" y="11" width="18" height="10" rx="2" />
-                      <rect x="7" y="15" width="2" height="2" rx="1" />
-                      <rect x="15" y="15" width="2" height="2" rx="1" />
-                      <path d="M9 7V4a3 3 0 0 1 6 0v3" />
-                      <path d="M12 17v2" />
-                    </svg>
-                  </span>
-                  <div>
-                    <span className="font-bold text-gray-900">Tecnología Avanzada</span>
-                    <p className="text-gray-700 text-sm">Soluciones basadas en IA</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Nuestra Propuesta de Valor */}
-      <section id="propuesta-valor" className="w-full bg-[#f7f7f7] py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col items-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 text-center mb-2 relative">
-              Nuestra Propuesta de Valor
-              <span className="block mx-auto mt-2 w-32 h-1 bg-[#FF6F00] rounded"></span>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Soluciones Completas */}
-            <div className="bg-white rounded-2xl shadow-lg p-4 md:p-3 flex flex-col gap-2 items-start min-h-[140px] h-[220px] md:h-[200px] lg:h-[180px] transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-              <span className="bg-[#FF6F00] rounded-full w-14 h-14 flex items-center justify-center mb-2">
-                <svg width="32" height="32" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-2-2"/></svg>
-              </span>
-              <h3 className="text-xl font-extrabold text-gray-900">Soluciones Completas</h3>
-              <p className="text-gray-700">Desde lo legal hasta lo operativo, cubrimos todas las necesidades de su empresa.</p>
-            </div>
-            {/* Servicios Adaptados */}
-            <div className="bg-white rounded-2xl shadow-lg p-4 md:p-3 flex flex-col gap-2 items-start min-h-[140px] h-[220px] md:h-[200px] lg:h-[180px] transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-              <span className="bg-[#FF6F00] rounded-full w-14 h-14 flex items-center justify-center mb-2">
-                <svg width="32" height="32" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12h6M9 16h6M9 8h6"/></svg>
-              </span>
-              <h3 className="text-xl font-extrabold text-gray-900">Servicios Adaptados</h3>
-              <p className="text-gray-700">Personalizamos nuestras soluciones según el tamaño, sector y etapa de cada empresa.</p>
-            </div>
-            {/* Integración Tecnológica */}
-            <div className="bg-white rounded-2xl shadow-lg p-4 md:p-3 flex flex-col gap-2 items-start min-h-[140px] h-[220px] md:h-[200px] lg:h-[180px] transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-              <span className="bg-[#FF6F00] rounded-full w-14 h-14 flex items-center justify-center mb-2">
-                <svg width="32" height="32" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8v8H8z"/></svg>
-              </span>
-              <h3 className="text-xl font-extrabold text-gray-900">Integración Tecnológica</h3>
-              <p className="text-gray-700">Implementamos herramientas tecnológicas inteligentes para optimizar su operación.</p>
-            </div>
-            {/* Acompañamiento Personalizado */}
-            <div className="bg-white rounded-2xl shadow-lg p-4 md:p-3 flex flex-col gap-2 items-start min-h-[140px] h-[220px] md:h-[200px] lg:h-[180px] transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-              <span className="bg-[#FF6F00] rounded-full w-14 h-14 flex items-center justify-center mb-2">
-                <svg width="32" height="32" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 14c0-2-4-3-4-3s-4 1-4 3"/><circle cx="12" cy="10" r="2"/></svg>
-              </span>
-              <h3 className="text-xl font-extrabold text-gray-900">Acompañamiento Personalizado</h3>
-              <p className="text-gray-700">Trabajamos de cerca con su equipo, enfocándonos en resultados medibles.</p>
-            </div>
-            {/* Escalabilidad */}
-            <div className="bg-white rounded-2xl shadow-lg p-4 md:p-3 flex flex-col gap-2 items-start min-h-[140px] h-[220px] md:h-[200px] lg:h-[180px] transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-              <span className="bg-[#FF6F00] rounded-full w-14 h-14 flex items-center justify-center mb-2">
-                <svg width="32" height="32" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8v8H8z"/><path d="M16 16l4 4"/></svg>
-              </span>
-              <h3 className="text-xl font-extrabold text-gray-900">Escalabilidad</h3>
-              <p className="text-gray-700">Nuestras soluciones crecen con su empresa, transformando procesos a medida que evoluciona.</p>
-            </div>
-            {/* ¿Listo para Transformar? */}
-            <div className="bg-[#FF6F00] rounded-2xl shadow-lg p-4 md:p-3 flex flex-col gap-2 items-start justify-between min-h-[140px] h-[220px] md:h-[200px] lg:h-[180px] transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-              <span className="bg-white rounded-full w-14 h-14 flex items-center justify-center mb-2">
-                <svg width="32" height="32" fill="none" stroke="#FF6F00" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M5 12h14"/><path d="M12 2l7 10-7 10-7-10z"/></svg>
-              </span>
-              <h3 className="text-xl font-extrabold text-white">¿Listo para Transformar?</h3>
-              <p className="text-white">Descubra cómo podemos impulsar su empresa al siguiente nivel.</p>
-              <a href="#contacto" className="mt-2 inline-block bg-white text-[#FF6F00] font-bold px-6 py-2 rounded shadow hover:bg-gray-100 transition">Contáctanos</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Áreas de Servicio */}
-      <section id="servicios" className="w-full bg-white py-16 px-4 text-black">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-black text-center mb-2 relative">
-            Áreas de Servicio
-            <span className="block mx-auto mt-2 w-32 h-1 bg-[#FF6F00] rounded"></span>
-          </h2>
-          <p className="text-center text-black mb-10">Explore nuestras soluciones integrales para su empresa</p>
-          {/* Tabs */}
-          <TabsServicios />
-        </div>
-      </section>
-
-      {/* Casos de Éxito */}
-      <section id="casos-exito" className="w-full bg-[#181818] py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white text-center mb-2 relative">
-            Casos de Éxito
-            <span className="block mx-auto mt-2 w-24 h-1 bg-[#FF6F00] rounded"></span>
-          </h2>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Tarjeta 1 */}
-            <div className="bg-[#232c3b] rounded-xl p-8 shadow-lg flex flex-col justify-between min-h-[320px] relative">
-              <span className="absolute top-6 right-6 bg-[#FF6F00] text-white text-sm font-bold px-4 py-1 rounded-full" style={{marginBottom: '1.5rem'}} >Logística</span>
-              <div className="flex items-center gap-4 mb-4 mt-12">
-                <span className="bg-[#FF6F00] rounded-full w-12 h-12 flex items-center justify-center text-2xl text-white"><svg width="28" height="28" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 11v2"/><path d="M10 11v2"/><path d="M14 11v2"/><path d="M18 11v2"/></svg></span>
-                <h3 className="text-xl font-extrabold text-white">Optimización Logística</h3>
-              </div>
-              <p className="text-white mb-6">Empresa logística que redujo un 25% sus costos operativos mediante la implementación de nuestras soluciones de optimización de rutas y gestión de inventario.</p>
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                <span className="text-[#FF6F00] font-bold">25% reducción de costos</span>
-              </div>
-            </div>
-            {/* Tarjeta 2 */}
-            <div className="bg-[#232c3b] rounded-xl p-8 shadow-lg flex flex-col justify-between min-h-[320px] relative">
-              <span className="absolute top-6 right-6 bg-[#FF6F00] text-white text-sm font-bold px-4 py-1 rounded-full" style={{marginBottom: '1.5rem'}} >Tecnología</span>
-              <div className="flex items-center gap-4 mb-4 mt-12">
-                <span className="bg-[#FF6F00] rounded-full w-12 h-12 flex items-center justify-center text-2xl text-white"><svg width="28" height="28" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 9h8M8 13h6"/></svg></span>
-                <h3 className="text-xl font-extrabold text-white">Automatización Legal</h3>
-              </div>
-              <p className="text-white mb-6">PyME que automatizó su área legal con chatbots de IA, reduciendo tiempos de respuesta y mejorando la satisfacción de sus clientes.</p>
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                <span className="text-[#FF6F00] font-bold">80% menos tiempo de respuesta</span>
-              </div>
-            </div>
-            {/* Tarjeta 3 */}
-            <div className="bg-[#232c3b] rounded-xl p-8 shadow-lg flex flex-col justify-between min-h-[320px] relative">
-              <span className="absolute top-6 right-6 bg-[#FF6F00] text-white text-sm font-bold px-4 py-1 rounded-full" style={{marginBottom: '1.5rem'}} >Marketing</span>
-              <div className="flex items-center gap-4 mb-4 mt-12">
-                <span className="bg-[#FF6F00] rounded-full w-12 h-12 flex items-center justify-center text-2xl text-white"><svg width="28" height="28" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5 12h14"/><circle cx="12" cy="12" r="10"/></svg></span>
-                <h3 className="text-xl font-extrabold text-white">Estrategia Digital</h3>
-              </div>
-              <p className="text-white mb-6">Firma comercial que duplicó ventas mediante una estrategia digital integral, incluyendo posicionamiento SEO y campañas de conversión.</p>
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                <span className="text-[#FF6F00] font-bold">100% incremento en ventas</span>
-              </div>
-            </div>
-          </div>
-          {/* Por Qué Elegir Nexoria */}
-          <section className="w-full bg-[#f6f6f6] py-20 px-4">
-            <div className="max-w-7xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-extrabold text-[#181818] text-center mb-2 relative">
-                ¿Por Qué Elegir Nexoria?
-                <span className="block mx-auto mt-2 w-24 h-1 bg-[#FF6F00] rounded"></span>
-              </h2>
-              <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {/* Tarjeta 1 */}
-                <div className="bg-white rounded-xl p-8 shadow flex flex-col min-h-[180px]">
-                  <span className="bg-[#FF6F00] rounded-full w-14 h-14 flex items-center justify-center text-2xl text-white mb-4">
-                    <svg width="28" height="28" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M5 12h14"/><circle cx="12" cy="12" r="10"/></svg>
-                  </span>
-                  <h3 className="text-xl font-extrabold text-[#181818] mb-2">Enfoque Integral</h3>
-                  <p className="text-[#181818]">Unimos derecho, estrategia y tecnología para ofrecer soluciones completas a problemas complejos.</p>
-                </div>
-                {/* Tarjeta 2 */}
-                <div className="bg-white rounded-xl p-8 shadow flex flex-col min-h-[180px]">
-                  <span className="bg-[#FF6F00] rounded-full w-14 h-14 flex items-center justify-center text-2xl text-white mb-4">
-                    <svg width="28" height="28" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
-                  </span>
-                  <h3 className="text-xl font-extrabold text-[#181818] mb-2">Equipo Multidisciplinario</h3>
-                  <p className="text-[#181818]">Profesionales con experiencia en diversas áreas trabajando de forma coordinada para su empresa.</p>
-                </div>
-                {/* Tarjeta 3 */}
-                <div className="bg-white rounded-xl p-8 shadow flex flex-col min-h-[180px]">
-                  <span className="bg-[#FF6F00] rounded-full w-14 h-14 flex items-center justify-center text-2xl text-white mb-4">
-                    <svg width="28" height="28" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
-                  </span>
-                  <h3 className="text-xl font-extrabold text-[#181818] mb-2">Acompañamiento Cercano</h3>
-                  <p className="text-[#181818]">Procesos personalizados y seguimiento constante para garantizar resultados óptimos.</p>
-                </div>
-                {/* Tarjeta 4 */}
-                <div className="bg-white rounded-xl p-8 shadow flex flex-col min-h-[180px]">
-                  <span className="bg-[#FF6F00] rounded-full w-14 h-14 flex items-center justify-center text-2xl text-white mb-4">
-                    <svg width="28" height="28" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 16h8M8 12h8M8 8h8"/></svg>
-                  </span>
-                  <h3 className="text-xl font-extrabold text-[#181818] mb-2">Medición de Resultados</h3>
-                  <p className="text-[#181818]">Evaluamos constantemente el impacto de nuestras soluciones para optimizar su rendimiento.</p>
-                </div>
-                {/* Tarjeta 5 */}
-                <div className="bg-white rounded-xl p-8 shadow flex flex-col min-h-[180px]">
-                  <span className="bg-[#FF6F00] rounded-full w-14 h-14 flex items-center justify-center text-2xl text-white mb-4">
-                    <svg width="28" height="28" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/></svg>
-                  </span>
-                  <h3 className="text-xl font-extrabold text-[#181818] mb-2">Escalabilidad</h3>
-                  <p className="text-[#181818]">Nuestras soluciones crecen con su empresa, adaptándose a nuevos desafíos y oportunidades.</p>
-                </div>
-                {/* Tarjeta 6 CTA */}
-                <div className="bg-[#FF6F00] rounded-xl p-8 shadow flex flex-col min-h-[180px] justify-between">
-                  <span className="bg-white rounded-full w-14 h-14 flex items-center justify-center text-2xl text-[#FF6F00] mb-4">
-                    <svg width="28" height="28" fill="none" stroke="#FF6F00" strokeWidth="2" viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2v20"/></svg>
-                  </span>
-                  <div>
-                    <h3 className="text-xl font-extrabold text-white mb-2">¿Listo para Comenzar?</h3>
-                    <p className="text-white mb-4">Descubra cómo podemos transformar su empresa con nuestras soluciones integrales.</p>
-                    <a href="#contacto" className="inline-block bg-white text-[#FF6F00] font-bold px-6 py-2 rounded shadow hover:bg-gray-100 transition">Contáctanos</a>
-        </div>
-                </div>
-              </div>
-          </div>
-          </section>
-        </div>
-      </section>
-
-      {/* Contacto Section */}
-      <section id="contacto" className="w-full bg-white py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#181818] relative inline-block">
-            Contáctanos
-              <span className="block mx-auto mt-2 w-24 h-1 bg-[#FF6F00] rounded"></span>
-          </h2>
-            <p className="text-lg text-gray-600 mt-4">¿Listo para transformar tu empresa?</p>
-          </div>
-          <div className="flex flex-col md:flex-row gap-12">
-            {/* Columna Izquierda: Formulario */}
-            <ContactForm />
-            {/* Columna Derecha: Información de Contacto */}
-            <div className="flex-1 bg-[#181818] text-white p-12 rounded-lg flex flex-col justify-center min-h-[520px] h-full">
-              <div>
-                <h3 className="text-2xl font-bold text-[#FF6F00] mb-8 text-center md:text-left">Información de Contacto</h3>
-                <div className="space-y-8">
-                  <div className="flex items-start gap-4">
-                    <span className="bg-[#FF6F00] rounded-full w-10 h-10 flex items-center justify-center mt-1"><svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></span>
-                    <div>
-                      <h4 className="font-bold">Dirección</h4>
-                      <p>{contactInfo?.direccion || 'No disponible'}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <span className="bg-[#FF6F00] rounded-full w-10 h-10 flex items-center justify-center mt-1"><svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></span>
-                    <div>
-                      <h4 className="font-bold">Teléfono</h4>
-                      <p>{contactInfo?.telefono || 'No disponible'}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <span className="bg-[#FF6F00] rounded-full w-10 h-10 flex items-center justify-center mt-1"><svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
-                    <div>
-                      <h4 className="font-bold">Correo Electrónico</h4>
-                      <p>{contactInfo?.correo || 'No disponible'}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <span className="bg-[#FF6F00] rounded-full w-10 h-10 flex items-center justify-center mt-1"><svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></span>
-                    <div>
-                      <h4 className="font-bold">Horario de Atención</h4>
-                      <p>{contactInfo?.horario || 'No disponible'}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-10">
-                <h4 className="font-bold mb-4 text-center md:text-left">Síguenos en redes sociales</h4>
-                <div className="flex gap-3 justify-center md:justify-start">
-                  {redes.map(red => (
-                    <a key={red.name} href={red.url} target="_blank" rel="noopener noreferrer" className="bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#FF6F00] transition-colors">
-                      {red.icon}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-            </div>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-// Componente TabsServicios
-function TabsServicios() {
-  const tabs = [
-    { label: 'Servicios Legales', icon: (
-      <svg className="inline mr-2" width="20" height="20" fill="none" stroke="#FF6F00" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 3v2"/><path d="M6 5l6 1 6-1"/><path d="M6 5v2a6 6 0 0 0 12 0V5"/><path d="M6 17a6 6 0 0 0 12 0"/><path d="M6 17v2a6 6 0 0 0 12 0v-2"/></svg>
-    ) },
-    { label: 'Servicios Logísticos', icon: (
-      <svg className="inline mr-2" width="20" height="20" fill="none" stroke="#222" strokeWidth="2" viewBox="0 0 24 24"><rect x="1" y="7" width="15" height="13" rx="2"/><path d="M16 7h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"/><circle cx="5.5" cy="18.5" r="1.5"/><circle cx="18.5" cy="18.5" r="1.5"/></svg>
-    ) },
-    { label: 'Estrategia en Negocios', icon: (
-      <svg className="inline mr-2" width="20" height="20" fill="none" stroke="#222" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l3-3 4 4 5-5"/></svg>
-    ) },
-    { label: 'Marketing', icon: (
-      <svg className="inline mr-2" width="20" height="20" fill="none" stroke="#222" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
-    ) },
-    { label: 'Tecnología e IA', icon: (
-      <svg className="inline mr-2" width="20" height="20" fill="none" stroke="#222" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 11v2"/><path d="M10 11v2"/><path d="M14 11v2"/><path d="M18 11v2"/></svg>
-    ) },
-  ];
-  const [active, setActive] = useState(0);
-  return (
-    <div>
-      <div className="flex flex-wrap justify-center gap-2 border-b mb-8">
-        {tabs.map((tab, i) => (
-          <button
-            key={tab.label}
-            className={`px-4 py-2 font-bold flex items-center gap-1 border-b-2 transition-all ${active === i ? 'text-[#FF6F00] border-[#FF6F00] bg-white' : 'text-gray-900 border-transparent bg-transparent hover:bg-gray-100'}`}
-            onClick={() => setActive(i)}
+      {/* Quiénes Somos */}
+      <section id="quienes-somos" className="py-16 sm:py-20 md:py-24 bg-white relative overflow-hidden">
+        {/* Elementos decorativos */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FF6A00] to-transparent"></div>
+        <div className="absolute -top-16 sm:-top-20 -right-16 sm:-right-20 w-32 h-32 sm:w-40 sm:h-40 bg-gradient-to-br from-[#FF6A00]/10 to-orange-500/10 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 sm:mb-16 md:mb-20"
           >
-            {tab.icon}{tab.label}
-          </button>
-        ))}
-      </div>
-      <div>
-        {active === 0 && <ServiciosLegales />}
-        {active === 1 && <ServiciosLogisticos />}
-        {active === 2 && <EstrategiaNegocios />}
-        {active === 3 && <Marketing />}
-        {active === 4 && <TecnologiaIA />}
-      </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-black mb-6 sm:mb-8 px-4">
+              <span className="text-[#FF6A00]">
+                Nexoria:
+              </span>
+              <br />
+              Expertos que resuelven
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-light px-4">
+              Somos una firma legal que combina experiencia, tecnología y trato humano para ayudarte a resolver tus temas legales con eficacia, claridad y confianza.
+            </p>
+          </motion.div>
+          
+          {/* Elementos visuales */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12"
+          >
+                        {[
+              { icon: '⚖️', title: 'Experiencia', desc: 'Más de 5 años resolviendo casos exitosamente' },
+              { icon: '💻', title: 'Tecnología', desc: 'Herramientas digitales para mayor eficiencia' },
+              { icon: '🤝', title: 'Trato Humano', desc: 'Atención personalizada y cercana' }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="group text-center px-4"
+              >
+                <div className="relative mb-6 sm:mb-8">
+                  <div className="text-5xl sm:text-6xl md:text-7xl mb-4 sm:mb-6 group-hover:scale-125 transition-all duration-500 group-hover:rotate-6">
+                    {item.icon}
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#FF6A00]/20 to-orange-500/20 rounded-full blur-3xl group-hover:blur-2xl group-hover:scale-150 transition-all duration-500"></div>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-black mb-3 sm:mb-4 group-hover:text-[#FF6A00] transition-colors duration-300">{item.title}</h3>
+                <p className="text-sm sm:text-base text-gray-600 font-light group-hover:text-gray-800 transition-colors duration-300 leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Servicios Legales */}
+      <section id="servicios" className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+        {/* Elementos decorativos */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FF6A00] to-transparent"></div>
+        <div className="absolute -bottom-16 sm:-bottom-20 -left-16 sm:-left-20 w-32 h-32 sm:w-40 sm:h-40 bg-gradient-to-tr from-[#FF6A00]/10 to-orange-500/10 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 sm:mb-16 md:mb-20"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-black mb-6 sm:mb-8 px-4">
+              Nuestros Servicios Legales
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto font-light px-4">
+              Soluciones integrales para todas tus necesidades legales
+            </p>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          >
+            {servicios.map((servicio, index) => (
+              <ServiceCard key={index} servicio={servicio} index={index} />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Legal para Emprendedores y PYMES */}
+      <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
+        {/* Elementos decorativos */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FF6A00] to-transparent"></div>
+        <div className="absolute top-16 sm:top-20 left-16 sm:left-20 w-48 h-48 sm:w-72 sm:h-72 bg-gradient-to-br from-[#FF6A00]/10 to-orange-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-16 sm:bottom-20 right-16 sm:right-20 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-tl from-blue-600/10 to-purple-600/10 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-12 sm:mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 sm:mb-12 leading-tight px-4">
+              <span className="text-[#FF6A00]">
+                "Formaliza tu idea,
+              </span>
+              <br />
+              <span className="text-[#FF6A00]">
+                protege tu negocio,
+              </span>
+              <br />
+              <span className="text-[#FF6A00]">
+                crece sin miedo."
+              </span>
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light px-4">
+              Ofrecemos asesoría completa para pequeñas y medianas empresas: constitución, contratos, marcas, permisos y cumplimiento legal.
+            </p>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-6xl sm:text-8xl md:text-9xl mb-6 sm:mb-8 animate-bounce hover:animate-pulse cursor-pointer transition-all duration-300 hover:scale-110"
+          >
+            🚀
+          </motion.div>
+        </div>
+      </section>
+
+            {/* Testimonios */}
+      <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden">
+        {/* Elementos decorativos */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FF6A00] to-transparent"></div>
+        <div className="absolute top-16 sm:top-20 right-16 sm:right-20 w-32 h-32 sm:w-40 sm:h-40 bg-gradient-to-bl from-[#FF6A00]/10 to-orange-500/10 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 sm:mb-16 md:mb-20"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 sm:mb-8 px-4">
+              Lo que dicen nuestros clientes
+            </h2>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          >
+            {testimonios.map((testimonio, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden relative border border-gray-100 hover:border-[#FF6A00]/30"
+              >
+                {/* Efecto de fondo en hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6A00]/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                
+                <div className="relative z-10">
+                  {/* Header con avatar y info */}
+                  <div className="flex items-start mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#FF6A00] to-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3 shadow-md group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                      {testimonio.nombre.charAt(0)}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-bold text-black text-base group-hover:text-[#FF6A00] transition-colors duration-300 truncate">{testimonio.nombre}</h4>
+                      <p className="text-xs text-gray-600 mb-1">{testimonio.empresa}</p>
+                      <div className="flex items-center gap-2">
+                        <span className="inline-block bg-[#FF6A00]/10 text-[#FF6A00] text-xs px-2 py-1 rounded-full font-medium">
+                          {testimonio.servicio}
+                        </span>
+                        <span className="text-xs text-gray-500">{testimonio.fecha}</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Testimonio */}
+                  <p className="text-gray-700 mb-4 italic text-sm leading-relaxed group-hover:text-gray-800 transition-colors duration-300 line-clamp-3">"{testimonio.opinion}"</p>
+                  
+                  {/* Estrellas */}
+                  <div className="flex text-yellow-400">
+                    {[...Array(testimonio.estrellas)].map((_, i) => (
+                      <span key={i} className="text-sm group-hover:scale-110 transition-transform duration-300" style={{transitionDelay: `${i * 50}ms`}}>⭐</span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+              </div>
+      </section>
+
+      
+
+            {/* CTA Final */}
+      <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-r from-[#FF6A00] via-orange-500 to-yellow-500 relative overflow-hidden">
+        {/* Elementos decorativos */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent"></div>
+        <div className="absolute top-16 sm:top-20 left-16 sm:left-20 w-48 h-48 sm:w-72 sm:h-72 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-16 sm:bottom-20 right-16 sm:right-20 w-64 h-64 sm:w-96 sm:h-96 bg-white/10 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 sm:mb-12 leading-tight px-4">
+              Tu tranquilidad legal empieza hoy.
+            </h2>
+            <Link
+              href="#contacto"
+              className="inline-block bg-white text-[#FF6A00] px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 rounded-2xl text-lg sm:text-xl font-bold hover:bg-gray-100 transition-all duration-500 transform hover:scale-110 hover:shadow-3xl hover:shadow-white/25 hover:-translate-y-2"
+            >
+              Agendar consulta sin costo
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Sección de Contáctanos - MANTENIDA */}
+      <section id="contacto" className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden">
+        {/* Elementos decorativos */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FF6A00] to-transparent"></div>
+        <div className="absolute top-16 sm:top-20 right-16 sm:right-20 w-32 h-32 sm:w-40 sm:h-40 bg-gradient-to-bl from-[#FF6A00]/10 to-orange-500/10 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 relative z-10">
+          <ContactForm />
+        </div>
+      </section>
     </div>
   );
 }
 
-// Componente ServiciosLegales
-function ServiciosLegales() {
-  return (
-    <div className="flex flex-col lg:flex-row gap-8">
-      {/* Columna izquierda */}
-      <div className="flex-1">
-        <h3 className="text-2xl font-extrabold text-[#FF6F00] mb-2">Servicios Legales</h3>
-        <p className="mb-4 text-black">Ofrecemos asesoría legal integral para proteger su empresa y optimizar sus operaciones desde una perspectiva jurídica.</p>
-        <div className="mb-4">
-          <span className="font-bold">Especialidades:</span>
-          <ul className="mt-2 space-y-2">
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-2-2" fill="none" stroke="#fff" strokeWidth="2"/></svg></span><span className="text-black"><b>Derecho Mercantil:</b> Constitución de empresas, contratos, fusiones, adquisiciones, litigios comerciales.</span></li>
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-2-2" fill="none" stroke="#fff" strokeWidth="2"/></svg></span><span className="text-black"><b>Derecho Civil:</b> Contratos civiles, arrendamientos, sucesiones, protección patrimonial.</span></li>
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-2-2" fill="none" stroke="#fff" strokeWidth="2"/></svg></span><span className="text-black"><b>Derecho Penal:</b> Defensa en delitos económicos, financieros, patrimoniales y corporativos.</span></li>
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4 4-2-2" fill="none" stroke="#fff" strokeWidth="2"/></svg></span><span className="text-black"><b>Derecho Laboral:</b> Contratación, cumplimiento de la LFT, despidos, representación ante tribunales.</span></li>
-          </ul>
-        </div>
-        <div className="bg-gray-100 rounded-lg p-4 mt-4">
-          <span className="font-bold text-black">Valor agregado:</span>
-          <p className="text-black">Prevención de riesgos jurídicos, fortalecimiento institucional y defensa profesional.</p>
-        </div>
-      </div>
-      {/* Columna derecha: Simulador */}
-      <div className="flex-1 bg-gray-100 rounded-2xl p-6 text-black">
-        <SimuladorRiesgoLegal />
-      </div>
-    </div>
-  );
-}
+// Componente de tarjeta de servicio con efecto de rotación 3D
+function ServiceCard({ servicio, index }: { servicio: any; index: number }) {
+  const [isFlipped, setIsFlipped] = useState(false);
 
-// Componente SimuladorRiesgoLegal
-function SimuladorRiesgoLegal() {
-  const [contratos, setContratos] = useState('no');
-  const [protocolos, setProtocolos] = useState('no');
-  const [asesoria, setAsesoria] = useState('no');
-  const [resultado, setResultado] = useState('');
-  function evaluar() {
-    let score = 0;
-    if (contratos === 'si') score++;
-    if (protocolos === 'si') score++;
-    if (asesoria === 'si') score++;
-    if (score === 3) setResultado('¡Riesgo Bajo! Su empresa está bien protegida legalmente.');
-    else if (score === 2) setResultado('Riesgo Medio. Puede mejorar su protección legal.');
-    else setResultado('Riesgo Alto. Le recomendamos asesoría legal inmediata.');
-  }
-  return (
-    <div>
-      <h4 className="text-xl font-bold mb-2">Simulador de Riesgo Legal</h4>
-      <p className="mb-4">Evalúe el nivel de protección legal de su empresa respondiendo estas preguntas:</p>
-      <div className="mb-3">
-        <label className="block mb-1 font-medium">¿Su empresa cuenta con contratos formalizados para todos sus servicios?</label>
-        <select value={contratos} onChange={e => setContratos(e.target.value)} className="w-full rounded border px-3 py-2">
-          <option value="no">No, trabajamos sin contratos</option>
-          <option value="si">Sí, todos los servicios tienen contrato</option>
-        </select>
-      </div>
-      <div className="mb-3">
-        <label className="block mb-1 font-medium">¿Tiene protocolos de cumplimiento normativo?</label>
-        <select value={protocolos} onChange={e => setProtocolos(e.target.value)} className="w-full rounded border px-3 py-2">
-          <option value="no">No tenemos</option>
-          <option value="si">Sí, tenemos protocolos</option>
-        </select>
-      </div>
-      <div className="mb-4">
-        <label className="block mb-1 font-medium">¿Cuenta con asesoría legal permanente?</label>
-        <select value={asesoria} onChange={e => setAsesoria(e.target.value)} className="w-full rounded border px-3 py-2">
-          <option value="no">No</option>
-          <option value="si">Sí</option>
-        </select>
-      </div>
-      <button onClick={evaluar} className="w-full bg-[#FF6F00] text-white font-bold py-3 rounded mt-2 hover:bg-orange-600 transition">Evaluar Riesgo Legal</button>
-      {resultado && <div className="mt-4 p-3 rounded bg-white text-center font-semibold text-[#FF6F00] border border-[#FF6F00]">{resultado}</div>}
-    </div>
-  );
-}
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped);
+  };
 
-// Servicios Logísticos
-function ServiciosLogisticos() {
-  return (
-    <div className="flex flex-col lg:flex-row gap-8">
-      <div className="flex-1">
-        <h3 className="text-2xl font-extrabold text-[#FF6F00] mb-2">Servicios Logísticos</h3>
-        <p className="mb-4 text-black">Optimizamos la cadena de suministro y la operación logística de tu empresa para lograr eficiencia y reducción de costos.</p>
-        <div className="mb-4">
-          <span className="font-bold">Especialidades:</span>
-          <ul className="mt-2 space-y-2">
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 11v2"/><path d="M10 11v2"/><path d="M14 11v2"/><path d="M18 11v2"/></svg></span><span className="text-black"><b>Logística Integral:</b> Diseño y gestión de cadenas de suministro, distribución y transporte.</span></li>
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 11v2"/><path d="M10 11v2"/><path d="M14 11v2"/><path d="M18 11v2"/></svg></span><span className="text-black"><b>Optimización de Costos:</b> Reducción de gastos logísticos y mejora de procesos.</span></li>
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 11v2"/><path d="M10 11v2"/><path d="M14 11v2"/><path d="M18 11v2"/></svg></span><span className="text-black"><b>Cumplimiento Normativo:</b> Asesoría en regulaciones y normativas de transporte y comercio.</span></li>
-          </ul>
-        </div>
-        <div className="bg-gray-100 rounded-lg p-4 mt-4">
-          <span className="font-bold text-black">Valor agregado:</span>
-          <p className="text-black">Eficiencia operativa, reducción de tiempos y costos, cumplimiento legal.</p>
-        </div>
-      </div>
-      <div className="flex-1 bg-gray-100 rounded-2xl p-6 text-black">
-        <SimuladorLogistico />
-      </div>
-    </div>
-  );
-}
+  // Información adicional para el reverso de cada servicio
+  const serviceDetails = {
+    'Derecho Civil': {
+      beneficios: ['Contratos personalizados', 'Resolución de conflictos', 'Asesoría en arrendamientos', 'Demandas civiles'],
+      tiempo: '2-4 semanas',
+      precio: 'Desde $2,500'
+    },
+    'Derecho Penal': {
+      beneficios: ['Defensa penal integral', 'Asesoría en denuncias', 'Recursos de apelación', 'Libertad bajo caución'],
+      tiempo: 'Inmediato',
+      precio: 'Desde $5,000'
+    },
+    'Derecho Laboral': {
+      beneficios: ['Despidos injustificados', 'Conflictos laborales', 'Pensiones y prestaciones', 'Auditorías laborales'],
+      tiempo: '1-3 semanas',
+      precio: 'Desde $3,000'
+    },
+    'Derecho Mercantil': {
+      beneficios: ['Constitución de sociedades', 'Cobranza extrajudicial', 'Juicios mercantiles', 'Contratos comerciales'],
+      tiempo: '2-6 semanas',
+      precio: 'Desde $4,000'
+    },
+    'Derecho Familiar': {
+      beneficios: ['Divorcios express', 'Custodia y patria potestad', 'Pensiones alimenticias', 'Sucesiones'],
+      tiempo: '1-2 meses',
+      precio: 'Desde $3,500'
+    },
+    'Derecho Corporativo': {
+      beneficios: ['Constitución de empresas', 'Compliance legal', 'Marcas y patentes', 'Fusión y adquisición'],
+      tiempo: '1-3 meses',
+      precio: 'Desde $6,000'
+    }
+  };
 
-function SimuladorLogistico() {
-  const [cadena, setCadena] = useState('no');
-  const [costos, setCostos] = useState('no');
-  const [normas, setNormas] = useState('no');
-  const [resultado, setResultado] = useState('');
-  function evaluar() {
-    let score = 0;
-    if (cadena === 'si') score++;
-    if (costos === 'si') score++;
-    if (normas === 'si') score++;
-    if (score === 3) setResultado('¡Logística Óptima! Su empresa tiene una operación eficiente.');
-    else if (score === 2) setResultado('Logística Mejorable. Puede optimizar aún más sus procesos.');
-    else setResultado('Alto Riesgo Logístico. Requiere asesoría y optimización urgente.');
-  }
-  return (
-    <div>
-      <h4 className="text-xl font-bold mb-2">Simulador de Eficiencia Logística</h4>
-      <p className="mb-4">Evalúe la eficiencia logística de su empresa respondiendo estas preguntas:</p>
-      <div className="mb-3">
-        <label className="block mb-1 font-medium">¿Cuenta con una cadena de suministro bien estructurada?</label>
-        <select value={cadena} onChange={e => setCadena(e.target.value)} className="w-full rounded border px-3 py-2">
-          <option value="no">No</option>
-          <option value="si">Sí</option>
-        </select>
-      </div>
-      <div className="mb-3">
-        <label className="block mb-1 font-medium">¿Ha optimizado sus costos logísticos en el último año?</label>
-        <select value={costos} onChange={e => setCostos(e.target.value)} className="w-full rounded border px-3 py-2">
-          <option value="no">No</option>
-          <option value="si">Sí</option>
-        </select>
-      </div>
-      <div className="mb-4">
-        <label className="block mb-1 font-medium">¿Cumple con todas las normativas de transporte y comercio?</label>
-        <select value={normas} onChange={e => setNormas(e.target.value)} className="w-full rounded border px-3 py-2">
-          <option value="no">No</option>
-          <option value="si">Sí</option>
-        </select>
-      </div>
-      <button onClick={evaluar} className="w-full bg-[#FF6F00] text-white font-bold py-3 rounded mt-2 hover:bg-orange-600 transition">Evaluar Eficiencia</button>
-      {resultado && <div className="mt-4 p-3 rounded bg-white text-center font-semibold text-[#FF6F00] border border-[#FF6F00]">{resultado}</div>}
-    </div>
-  );
-}
+  const details = serviceDetails[servicio.title as keyof typeof serviceDetails] || serviceDetails['Derecho Civil'];
 
-// Estrategia en Negocios
-function EstrategiaNegocios() {
   return (
-    <div className="flex flex-col lg:flex-row gap-8">
-      <div className="flex-1">
-        <h3 className="text-2xl font-extrabold text-[#FF6F00] mb-2">Estrategia en Negocios</h3>
-        <p className="mb-4 text-black">Impulsamos el crecimiento y la competitividad de tu empresa con estrategias personalizadas y análisis de mercado.</p>
-        <div className="mb-4">
-          <span className="font-bold">Especialidades:</span>
-          <ul className="mt-2 space-y-2">
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l3-3 4 4 5-5" stroke="#fff" strokeWidth="2" fill="none"/></svg></span><span className="text-black"><b>Consultoría Estratégica:</b> Análisis de mercado, modelos de negocio, planificación y expansión.</span></li>
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l3-3 4 4 5-5" stroke="#fff" strokeWidth="2" fill="none"/></svg></span><span className="text-black"><b>Evaluación Financiera:</b> Diagnóstico y proyección de resultados.</span></li>
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l3-3 4 4 5-5" stroke="#fff" strokeWidth="2" fill="none"/></svg></span><span className="text-black"><b>Transformación Empresarial:</b> Innovación y mejora continua.</span></li>
-          </ul>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className="relative h-80 sm:h-96 cursor-pointer perspective-1000"
+      onClick={handleFlip}
+    >
+      <div
+        className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d ${
+          isFlipped ? 'rotate-y-180' : ''
+        }`}
+      >
+        {/* Frente de la tarjeta */}
+        <div className="absolute inset-0 w-full h-full backface-hidden bg-white p-6 sm:p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 hover:scale-105 border border-gray-100 hover:border-[#FF6A00]/30 overflow-hidden">
+          {/* Efecto de fondo en hover */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#FF6A00]/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+          
+          <div className="relative z-10 h-full flex flex-col justify-between">
+            <div>
+              <div className="text-4xl sm:text-5xl md:text-6xl mb-4 sm:mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500">{servicio.icon}</div>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-black mb-3 sm:mb-4 group-hover:text-[#FF6A00] transition-colors duration-300">{servicio.title}</h3>
+              <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 font-light leading-relaxed group-hover:text-gray-800 transition-colors duration-300">{servicio.description}</p>
+            </div>
+            
+            <div className="text-center">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleFlip();
+                }}
+                className="inline-flex items-center text-[#FF6A00] font-semibold hover:text-orange-600 transition-all duration-300 group-hover:translate-x-3 group-hover:scale-105 bg-orange-50 hover:bg-orange-100 px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base"
+              >
+                Saber más 
+                <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+    </div>
         </div>
-        <div className="bg-gray-100 rounded-lg p-4 mt-4">
-          <span className="font-bold text-black">Valor agregado:</span>
-          <p className="text-black">Crecimiento sostenible, toma de decisiones informada y ventaja competitiva.</p>
+
+        {/* Reverso de la tarjeta */}
+        <div className="absolute inset-0 w-full h-full backface-hidden bg-gradient-to-br from-[#FF6A00] to-orange-500 p-6 sm:p-8 rounded-3xl shadow-xl text-white rotate-y-180">
+          <div className="h-full flex flex-col justify-between">
+            <div>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-4 sm:mb-6 text-center">{servicio.title}</h3>
+              
+              <div className="space-y-3 sm:space-y-4">
+                <div>
+                  <h4 className="font-semibold text-white/90 mb-2 text-sm sm:text-base">Beneficios:</h4>
+                  <ul className="space-y-1 sm:space-y-2">
+                    {details.beneficios.map((beneficio, idx) => (
+                      <li key={idx} className="flex items-center text-xs sm:text-sm">
+                        <span className="text-white/80 mr-2">✓</span>
+                        {beneficio}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-3 sm:pt-4">
+                  <div className="text-center">
+                    <p className="text-white/70 text-xs">Tiempo estimado</p>
+                    <p className="font-bold text-white text-sm sm:text-base">{details.tiempo}</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-white/70 text-xs">Precio desde</p>
+                    <p className="font-bold text-white text-sm sm:text-base">{details.precio}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="text-center">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleFlip();
+                }}
+                className="inline-flex items-center bg-white text-[#FF6A00] font-semibold hover:bg-gray-100 transition-all duration-300 px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl text-sm sm:text-base"
+              >
+                Volver
+                <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="flex-1 bg-gray-100 rounded-2xl p-6 text-black">
-        <SimuladorNegocios />
-      </div>
-    </div>
-  );
-}
-
-function SimuladorNegocios() {
-  const [plan, setPlan] = useState('no');
-  const [finanzas, setFinanzas] = useState('no');
-  const [innovacion, setInnovacion] = useState('no');
-  const [resultado, setResultado] = useState('');
-  function evaluar() {
-    let score = 0;
-    if (plan === 'si') score++;
-    if (finanzas === 'si') score++;
-    if (innovacion === 'si') score++;
-    if (score === 3) setResultado('¡Negocio Sólido! Su empresa está bien posicionada.');
-    else if (score === 2) setResultado('Negocio Mejorable. Puede fortalecer su estrategia.');
-    else setResultado('Alto Riesgo Empresarial. Requiere consultoría estratégica.');
-  }
-  return (
-    <div>
-      <h4 className="text-xl font-bold mb-2">Simulador de Estrategia Empresarial</h4>
-      <p className="mb-4">Evalúe la solidez estratégica de su empresa respondiendo estas preguntas:</p>
-      <div className="mb-3">
-        <label className="block mb-1 font-medium">¿Cuenta con un plan estratégico actualizado?</label>
-        <select value={plan} onChange={e => setPlan(e.target.value)} className="w-full rounded border px-3 py-2">
-          <option value="no">No</option>
-          <option value="si">Sí</option>
-        </select>
-      </div>
-      <div className="mb-3">
-        <label className="block mb-1 font-medium">¿Realiza análisis financiero periódicamente?</label>
-        <select value={finanzas} onChange={e => setFinanzas(e.target.value)} className="w-full rounded border px-3 py-2">
-          <option value="no">No</option>
-          <option value="si">Sí</option>
-        </select>
-      </div>
-      <div className="mb-4">
-        <label className="block mb-1 font-medium">¿Fomenta la innovación en su empresa?</label>
-        <select value={innovacion} onChange={e => setInnovacion(e.target.value)} className="w-full rounded border px-3 py-2">
-          <option value="no">No</option>
-          <option value="si">Sí</option>
-        </select>
-      </div>
-      <button onClick={evaluar} className="w-full bg-[#FF6F00] text-white font-bold py-3 rounded mt-2 hover:bg-orange-600 transition">Evaluar Estrategia</button>
-      {resultado && <div className="mt-4 p-3 rounded bg-white text-center font-semibold text-[#FF6F00] border border-[#FF6F00]">{resultado}</div>}
-    </div>
-  );
-}
-
-// Marketing
-function Marketing() {
-  return (
-    <div className="flex flex-col lg:flex-row gap-8">
-      <div className="flex-1">
-        <h3 className="text-2xl font-extrabold text-[#FF6F00] mb-2">Marketing</h3>
-        <p className="mb-4 text-black">Potenciamos la presencia y el crecimiento de tu empresa con estrategias de marketing digital y comercial.</p>
-        <div className="mb-4">
-          <span className="font-bold">Especialidades:</span>
-          <ul className="mt-2 space-y-2">
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8" stroke="#fff" strokeWidth="2" fill="none"/></svg></span><span className="text-black"><b>Branding:</b> Posicionamiento y construcción de marca.</span></li>
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8" stroke="#fff" strokeWidth="2" fill="none"/></svg></span><span className="text-black"><b>Marketing Digital:</b> Estrategias en redes sociales, campañas y automatización.</span></li>
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8" stroke="#fff" strokeWidth="2" fill="none"/></svg></span><span className="text-black"><b>Comercial:</b> Estrategias de ventas y crecimiento de clientes.</span></li>
-          </ul>
-        </div>
-        <div className="bg-gray-100 rounded-lg p-4 mt-4">
-          <span className="font-bold text-black">Valor agregado:</span>
-          <p className="text-black">Mayor visibilidad, captación de clientes y crecimiento sostenible.</p>
-        </div>
-      </div>
-      <div className="flex-1 bg-gray-100 rounded-2xl p-6 text-black">
-        <SimuladorMarketing />
-      </div>
-    </div>
-  );
-}
-
-function SimuladorMarketing() {
-  const [marca, setMarca] = useState('no');
-  const [digital, setDigital] = useState('no');
-  const [ventas, setVentas] = useState('no');
-  const [resultado, setResultado] = useState('');
-  function evaluar() {
-    let score = 0;
-    if (marca === 'si') score++;
-    if (digital === 'si') score++;
-    if (ventas === 'si') score++;
-    if (score === 3) setResultado('¡Marketing Exitoso! Su empresa tiene gran visibilidad.');
-    else if (score === 2) setResultado('Marketing Mejorable. Puede potenciar su presencia digital.');
-    else setResultado('Alto Riesgo Comercial. Requiere estrategia de marketing urgente.');
-  }
-  return (
-    <div>
-      <h4 className="text-xl font-bold mb-2">Simulador de Marketing</h4>
-      <p className="mb-4">Evalúe la efectividad de su marketing respondiendo estas preguntas:</p>
-      <div className="mb-3">
-        <label className="block mb-1 font-medium">¿Tiene una marca bien posicionada?</label>
-        <select value={marca} onChange={e => setMarca(e.target.value)} className="w-full rounded border px-3 py-2">
-          <option value="no">No</option>
-          <option value="si">Sí</option>
-        </select>
-      </div>
-      <div className="mb-3">
-        <label className="block mb-1 font-medium">¿Utiliza marketing digital y automatización?</label>
-        <select value={digital} onChange={e => setDigital(e.target.value)} className="w-full rounded border px-3 py-2">
-          <option value="no">No</option>
-          <option value="si">Sí</option>
-        </select>
-      </div>
-      <div className="mb-4">
-        <label className="block mb-1 font-medium">¿Cuenta con estrategias de ventas efectivas?</label>
-        <select value={ventas} onChange={e => setVentas(e.target.value)} className="w-full rounded border px-3 py-2">
-          <option value="no">No</option>
-          <option value="si">Sí</option>
-        </select>
-      </div>
-      <button onClick={evaluar} className="w-full bg-[#FF6F00] text-white font-bold py-3 rounded mt-2 hover:bg-orange-600 transition">Evaluar Marketing</button>
-      {resultado && <div className="mt-4 p-3 rounded bg-white text-center font-semibold text-[#FF6F00] border border-[#FF6F00]">{resultado}</div>}
-    </div>
-  );
-}
-
-// Tecnología e IA
-function TecnologiaIA() {
-  return (
-    <div className="flex flex-col lg:flex-row gap-8">
-      <div className="flex-1">
-        <h3 className="text-2xl font-extrabold text-[#FF6F00] mb-2">Tecnología e IA</h3>
-        <p className="mb-4 text-black">Modernizamos tu empresa con soluciones tecnológicas e inteligencia artificial para automatizar y escalar procesos.</p>
-        <div className="mb-4">
-          <span className="font-bold">Especialidades:</span>
-          <ul className="mt-2 space-y-2">
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 11v2"/><path d="M10 11v2"/><path d="M14 11v2"/><path d="M18 11v2"/></svg></span><span className="text-black"><b>Automatización:</b> Implementación de sistemas y procesos automáticos.</span></li>
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 11v2"/><path d="M10 11v2"/><path d="M14 11v2"/><path d="M18 11v2"/></svg></span><span className="text-black"><b>Inteligencia Artificial:</b> Soluciones de IA para análisis, predicción y chatbots.</span></li>
-            <li className="flex items-start gap-2"><span className="mt-1"><svg width="18" height="18" fill="#FF6F00" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 11v2"/><path d="M10 11v2"/><path d="M14 11v2"/><path d="M18 11v2"/></svg></span><span className="text-black"><b>Transformación Digital:</b> Integración de tecnología en todos los procesos.</span></li>
-          </ul>
-        </div>
-        <div className="bg-gray-100 rounded-lg p-4 mt-4">
-          <span className="font-bold text-black">Valor agregado:</span>
-          <p className="text-black">Automatización, reducción de errores, escalabilidad y análisis avanzado.</p>
-        </div>
-      </div>
-      <div className="flex-1 bg-gray-100 rounded-2xl p-6 text-black">
-        <SimuladorTecnologia />
-      </div>
-    </div>
-  );
-}
-
-function SimuladorTecnologia() {
-  const [auto, setAuto] = useState('no');
-  const [ia, setIa] = useState('no');
-  const [digital, setDigital] = useState('no');
-  const [resultado, setResultado] = useState('');
-  function evaluar() {
-    let score = 0;
-    if (auto === 'si') score++;
-    if (ia === 'si') score++;
-    if (digital === 'si') score++;
-    if (score === 3) setResultado('¡Empresa Moderna! Su empresa está a la vanguardia tecnológica.');
-    else if (score === 2) setResultado('Tecnología Mejorable. Puede modernizar más procesos.');
-    else setResultado('Alto Riesgo Tecnológico. Requiere transformación digital urgente.');
-  }
-  return (
-    <div>
-      <h4 className="text-xl font-bold mb-2">Simulador de Tecnología e IA</h4>
-      <p className="mb-4">Evalúe el nivel de modernización tecnológica de su empresa respondiendo estas preguntas:</p>
-      <div className="mb-3">
-        <label className="block mb-1 font-medium">¿Ha automatizado procesos clave en su empresa?</label>
-        <select value={auto} onChange={e => setAuto(e.target.value)} className="w-full rounded border px-3 py-2">
-          <option value="no">No</option>
-          <option value="si">Sí</option>
-        </select>
-      </div>
-      <div className="mb-3">
-        <label className="block mb-1 font-medium">¿Utiliza inteligencia artificial en sus operaciones?</label>
-        <select value={ia} onChange={e => setIa(e.target.value)} className="w-full rounded border px-3 py-2">
-          <option value="no">No</option>
-          <option value="si">Sí</option>
-        </select>
-      </div>
-      <div className="mb-4">
-        <label className="block mb-1 font-medium">¿Ha iniciado la transformación digital de su empresa?</label>
-        <select value={digital} onChange={e => setDigital(e.target.value)} className="w-full rounded border px-3 py-2">
-          <option value="no">No</option>
-          <option value="si">Sí</option>
-        </select>
-      </div>
-      <button onClick={evaluar} className="w-full bg-[#FF6F00] text-white font-bold py-3 rounded mt-2 hover:bg-orange-600 transition">Evaluar Tecnología</button>
-      {resultado && <div className="mt-4 p-3 rounded bg-white text-center font-semibold text-[#FF6F00] border border-[#FF6F00]">{resultado}</div>}
-    </div>
+    </motion.div>
   );
 } 
