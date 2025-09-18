@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 0, 0, 0;
+  
+  /* Colores de Nexoria */
+  --nexoria-black: #000000;
+  --nexoria-orange: #FF6A00;
+  --nexoria-white: #FFFFFF;
+  --nexoria-gray: #111111;
+  --nexoria-light-gray: #666666;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Estilos personalizados */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Estilos para botones */
+.btn-primary {
+  @apply bg-[#FF6A00] text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-all transform hover:scale-105;
+}
+
+.btn-secondary {
+  @apply border-2 border-[#FF6A00] text-[#FF6A00] px-6 py-3 rounded-lg font-semibold hover:bg-[#FF6A00] hover:text-white transition-all transform hover:scale-105;
+}
+
+/* Estilos para tarjetas */
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2;
+}
+
+/* Estilos para textos */
+.text-gradient {
+  background: linear-gradient(135deg, #FF6A00, #FF8533);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Estilos para efectos 3D de tarjetas */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Estilos para truncar texto */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+} 
