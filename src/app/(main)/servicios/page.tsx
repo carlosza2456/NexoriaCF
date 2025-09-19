@@ -35,7 +35,7 @@ const servicios = [
   },
   {
     title: 'Asesoría Jurídica Empresarial',
-    description: 'Derecho corporativo, laboral, mercantil y fiscal para empresas en México y EE.UU.',
+    description: 'Derecho corporativo, laboral, mercantil y fiscal para empresas en México',
     icon: '🏢',
     url: '/servicios/asesoria-juridica',
     features: ['Derecho corporativo y laboral', 'Derecho mercantil y fiscal', 'Prevención de riesgos tributarios', 'Estrategias de planeación']

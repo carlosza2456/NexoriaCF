@@ -34,7 +34,7 @@ export default function Home() {
     },
     {
       title: 'Asesoría Jurídica Empresarial',
-      description: 'Derecho corporativo, laboral, mercantil y fiscal para empresas en México y EE.UU.',
+      description: 'Derecho corporativo, laboral, mercantil y fiscal para empresas en México.',
       icon: '🏢',
       url: '/servicios/asesoria-juridica'
     },
@@ -181,6 +181,184 @@ export default function Home() {
             >
               Descubre el Sistema Nexoria 360
             </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Quiénes Somos */}
+      <section id="quienes-somos" className="py-16 sm:py-20 md:py-24 bg-white relative overflow-hidden">
+        {/* Elementos decorativos */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FF6A00] to-transparent"></div>
+        <div className="absolute -top-16 sm:-top-20 -right-16 sm:-right-20 w-32 h-32 sm:w-40 sm:h-40 bg-gradient-to-br from-[#FF6A00]/10 to-orange-500/10 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 sm:mb-16 md:mb-20"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-black mb-6 sm:mb-8 px-4">
+              ¿Quiénes Somos?
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-light px-4">
+              Nexoria Consulting Firm es una consultora estratégica especializada en transformar empresas en Toluca Estado de México y Ciudad de México
+            </p>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16"
+          >
+            <div className="space-y-6 sm:space-y-8">
+              <div className="bg-gradient-to-br from-[#FF6A00]/5 to-orange-500/5 p-6 sm:p-8 rounded-2xl border border-[#FF6A00]/20">
+                <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4 sm:mb-6">Nuestra Misión</h3>
+                <p className="text-gray-700 leading-relaxed font-light">
+                  Transformar la forma en que operan las empresas eliminando pérdidas ocultas, reduciendo riesgos legales, fortaleciendo la estructura corporativa y construyendo una base sólida para crecer de manera sostenida.
+                </p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-blue-500/5 to-cyan-500/5 p-6 sm:p-8 rounded-2xl border border-blue-500/20">
+                <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4 sm:mb-6">Nuestra Visión</h3>
+                <p className="text-gray-700 leading-relaxed font-light">
+                  Ser la consultora líder en México que conecta la estrategia, la operación y lo legal para impulsar el crecimiento sostenible de las empresas.
+                </p>
+              </div>
+            </div>
+            
+            <div className="space-y-6 sm:space-y-8">
+              <div className="bg-gradient-to-br from-green-500/5 to-emerald-500/5 p-6 sm:p-8 rounded-2xl border border-green-500/20">
+                <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4 sm:mb-6">Nuestros Valores</h3>
+                <ul className="space-y-3 sm:space-y-4">
+                  <li className="flex items-start">
+                    <span className="text-[#FF6A00] mr-3 mt-1">✓</span>
+                    <span className="text-gray-700 font-light">Excelencia operativa y resultados medibles</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#FF6A00] mr-3 mt-1">✓</span>
+                    <span className="text-gray-700 font-light">Integridad y cumplimiento normativo</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#FF6A00] mr-3 mt-1">✓</span>
+                    <span className="text-gray-700 font-light">Innovación en metodologías de gestión</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#FF6A00] mr-3 mt-1">✓</span>
+                    <span className="text-gray-700 font-light">Compromiso con el crecimiento sostenible</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="bg-gradient-to-br from-purple-500/5 to-violet-500/5 p-6 sm:p-8 rounded-2xl border border-purple-500/20">
+                <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4 sm:mb-6">Nuestra Experiencia</h3>
+                <p className="text-gray-700 leading-relaxed font-light mb-4">
+                  Más de 10 años ayudando a empresas en Toluca, Estado de México y Ciudad de México a optimizar sus operaciones y cumplir con todas las regulaciones legales.
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="text-center">
+                    <div className="text-3xl sm:text-4xl font-bold text-[#FF6A00]">50+</div>
+                    <div className="text-sm text-gray-600">Empresas transformadas</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl sm:text-4xl font-bold text-[#FF6A00]">$2M+</div>
+                    <div className="text-sm text-gray-600">Ahorros generados</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Propuesta de Valor */}
+      <section id="propuesta-valor" className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+        {/* Elementos decorativos */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FF6A00] to-transparent"></div>
+        <div className="absolute -bottom-16 sm:-bottom-20 -left-16 sm:-left-20 w-32 h-32 sm:w-40 sm:h-40 bg-gradient-to-tr from-[#FF6A00]/10 to-orange-500/10 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 sm:mb-16 md:mb-20"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-black mb-6 sm:mb-8 px-4">
+              Nuestra Propuesta de Valor
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto font-light px-4">
+              Lo que nos hace únicos en el mercado de consultoría empresarial
+            </p>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          >
+            {[
+              {
+                icon: '🎯',
+                title: 'Enfoque Integral',
+                description: 'Combinamos estrategia, operación y aspectos legales en una sola solución, eliminando la fragmentación típica de otros consultores.',
+                color: 'from-red-500 to-pink-500'
+              },
+              {
+                icon: '📊',
+                title: 'Resultados Medibles',
+                description: 'Nuestros KPIs y tableros de gestión te permiten ver el impacto real de nuestras intervenciones en tiempo real.',
+                color: 'from-blue-500 to-cyan-500'
+              },
+              {
+                icon: '⚖️',
+                title: 'Cumplimiento Garantizado',
+                description: 'Te protegemos de riesgos legales, fiscales y regulatorios con programas de compliance robustos y actualizados.',
+                color: 'from-green-500 to-emerald-500'
+              },
+              {
+                icon: '🚀',
+                title: 'Metodología Propia',
+                description: 'El Sistema Nexoria 360 es nuestra metodología probada que diagnostica, diseña, ejecuta y evoluciona tu empresa.',
+                color: 'from-purple-500 to-violet-500'
+              },
+              {
+                icon: '🏢',
+                title: 'Experiencia Local',
+                description: 'Conocemos profundamente el mercado mexicano, sus regulaciones y las particularidades de hacer negocios en México.',
+                color: 'from-orange-500 to-red-500'
+              },
+              {
+                icon: '💡',
+                title: 'Innovación Constante',
+                description: 'Utilizamos las últimas tecnologías y metodologías para mantener tu empresa a la vanguardia del mercado.',
+                color: 'from-yellow-500 to-orange-500'
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 border border-gray-100 hover:border-[#FF6A00]/30"
+              >
+                <div className="relative mb-6 sm:mb-8">
+                  <div className="text-4xl sm:text-5xl md:text-6xl mb-4 sm:mb-6 group-hover:scale-125 transition-all duration-500 group-hover:rotate-6">
+                    {item.icon}
+                  </div>
+                  <div className={`absolute inset-0 bg-gradient-to-r ${item.color}/20 rounded-full blur-3xl group-hover:blur-2xl group-hover:scale-150 transition-all duration-500`}></div>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-black mb-3 sm:mb-4 group-hover:text-[#FF6A00] transition-colors duration-300">{item.title}</h3>
+                <p className="text-sm sm:text-base text-gray-600 font-light group-hover:text-gray-800 transition-colors duration-300 leading-relaxed">{item.description}</p>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
@@ -467,7 +645,160 @@ export default function Home() {
               </div>
       </section>
 
-      
+      {/* Casos de Éxito */}
+      <section id="casos-exito" className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
+        {/* Elementos decorativos */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FF6A00] to-transparent"></div>
+        <div className="absolute top-16 sm:top-20 left-16 sm:left-20 w-48 h-48 sm:w-72 sm:h-72 bg-gradient-to-br from-[#FF6A00]/10 to-orange-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-16 sm:bottom-20 right-16 sm:right-20 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-tl from-blue-600/10 to-purple-600/10 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 sm:mb-16 md:mb-20"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-black mb-6 sm:mb-8 px-4">
+              Casos de Éxito
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light px-4">
+              Historias reales de empresas que transformamos en Toluca, Estado de México y Ciudad de México
+            </p>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="space-y-12 sm:space-y-16"
+          >
+            {[
+              {
+                empresa: 'Manufactura Toluca',
+                industria: 'Manufactura Industrial',
+                ubicacion: 'Toluca, Estado de México',
+                problema: 'Pérdidas ocultas de $50,000 mensuales por procesos ineficientes y falta de controles',
+                solucion: 'Implementamos el Sistema Nexoria 360 con KPIs específicos y tableros de gestión en tiempo real',
+                resultados: [
+                  'Identificación y eliminación de pérdidas por $50,000 mensuales',
+                  'Reducción del 40% en tiempo de producción',
+                  'Implementación de controles internos robustos',
+                  'ROI del 300% en los primeros 6 meses'
+                ],
+                testimonio: 'Nexoria transformó completamente nuestra operación. Su Sistema Nexoria 360 es realmente efectivo.',
+                cliente: 'María González, Directora General'
+              },
+              {
+                empresa: 'Tech Solutions CDMX',
+                industria: 'Tecnología',
+                ubicacion: 'Ciudad de México',
+                problema: 'Falta de procesos estandarizados y métricas de desempeño en una empresa en crecimiento',
+                solucion: 'Diseñamos KPIs personalizados y procesos de mejora continua con metodología Lean',
+                resultados: [
+                  'Estandarización de 15 procesos críticos',
+                  'Implementación de tableros de control ejecutivo',
+                  'Reducción del 60% en errores operativos',
+                  'Crecimiento sostenido del 25% anual'
+                ],
+                testimonio: 'Nexoria me guió con su metodología y ahora opero con total eficiencia.',
+                cliente: 'Carlos Rodríguez, CEO'
+              },
+              {
+                empresa: 'Distribuidora Edomex',
+                industria: 'Distribución',
+                ubicacion: 'Estado de México',
+                problema: 'Riesgos de auditoría fiscal y falta de programas de compliance corporativo',
+                solucion: 'Desarrollamos un programa integral de compliance y políticas internas',
+                resultados: [
+                  'Programa de compliance 100% implementado',
+                  'Prevención de auditoría fiscal que habría costado millones',
+                  'Políticas internas y códigos de ética establecidos',
+                  'Capacitación completa del equipo directivo'
+                ],
+                testimonio: 'El programa de compliance nos salvó de una auditoría fiscal que habría costado millones.',
+                cliente: 'Ana López, Gerente General'
+              }
+            ].map((caso, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 hover:border-[#FF6A00]/30 overflow-hidden"
+              >
+                <div className="p-6 sm:p-8 md:p-10">
+                  {/* Header del caso */}
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 sm:mb-8">
+                    <div>
+                      <h3 className="text-2xl sm:text-3xl font-bold text-black mb-2">{caso.empresa}</h3>
+                      <div className="flex flex-wrap gap-2 sm:gap-4 text-sm sm:text-base text-gray-600">
+                        <span className="bg-[#FF6A00]/10 text-[#FF6A00] px-3 py-1 rounded-full font-medium">
+                          {caso.industria}
+                        </span>
+                        <span className="bg-blue-500/10 text-blue-600 px-3 py-1 rounded-full font-medium">
+                          {caso.ubicacion}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Contenido del caso */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                    <div className="space-y-4 sm:space-y-6">
+                      <div>
+                        <h4 className="text-lg sm:text-xl font-bold text-black mb-3 flex items-center">
+                          <span className="text-red-500 mr-2">⚠️</span>
+                          Problema Identificado
+                        </h4>
+                        <p className="text-gray-700 leading-relaxed font-light">{caso.problema}</p>
+                      </div>
+                      
+                      <div>
+                        <h4 className="text-lg sm:text-xl font-bold text-black mb-3 flex items-center">
+                          <span className="text-blue-500 mr-2">🔧</span>
+                          Solución Implementada
+                        </h4>
+                        <p className="text-gray-700 leading-relaxed font-light">{caso.solucion}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-4 sm:space-y-6">
+                      <div>
+                        <h4 className="text-lg sm:text-xl font-bold text-black mb-3 flex items-center">
+                          <span className="text-green-500 mr-2">📈</span>
+                          Resultados Obtenidos
+                        </h4>
+                        <ul className="space-y-2 sm:space-y-3">
+                          {caso.resultados.map((resultado, idx) => (
+                            <li key={idx} className="flex items-start">
+                              <span className="text-[#FF6A00] mr-3 mt-1 font-bold">✓</span>
+                              <span className="text-gray-700 font-light">{resultado}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Testimonio */}
+                  <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-br from-[#FF6A00]/5 to-orange-500/5 rounded-2xl border border-[#FF6A00]/20">
+                    <blockquote className="text-gray-700 italic text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">
+                      "{caso.testimonio}"
+                    </blockquote>
+                    <cite className="text-[#FF6A00] font-semibold text-sm sm:text-base">
+                      — {caso.cliente}
+                    </cite>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
             {/* CTA Final */}
       <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-r from-[#FF6A00] via-orange-500 to-yellow-500 relative overflow-hidden">
