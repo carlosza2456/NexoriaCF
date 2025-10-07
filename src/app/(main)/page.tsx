@@ -33,10 +33,10 @@ export default function Home() {
       url: '/servicios/liderazgo'
     },
     {
-      title: 'Asesoría Jurídica Empresarial',
-      description: 'Derecho corporativo, laboral, mercantil y fiscal para empresas en México.',
-      icon: '🏢',
-      url: '/servicios/asesoria-juridica'
+      title: 'Desarrollo Web y Soluciones Digitales',
+      description: 'Creación de páginas web, microaplicaciones y agentes de IA para optimizar tu presencia digital.',
+      icon: '💻',
+      url: '/servicios/desarrollo-web'
     },
     {
       title: 'Creación y Constitución de Empresas',
@@ -466,6 +466,7 @@ export default function Home() {
               Soluciones integrales que combinan estrategia, operación y aspectos legales
             </p>
           </motion.div>
+
           
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -874,10 +875,10 @@ function ServiceCard({ servicio, index }: { servicio: any; index: number }) {
       tiempo: '1-2 meses',
       precio: 'Desde $40,000'
     },
-    'Asesoría Jurídica Empresarial': {
-      beneficios: ['Derecho corporativo y laboral', 'Derecho mercantil y fiscal', 'Prevención de riesgos tributarios', 'Estrategias de planeación'],
-      tiempo: 'Consultoría continua',
-      precio: 'Desde $15,000/mes'
+    'Desarrollo Web y Soluciones Digitales': {
+      beneficios: ['Páginas web responsivas y modernas', 'Microaplicaciones personalizadas', 'Agentes de IA para automatización', 'Integración con sistemas existentes'],
+      tiempo: '2-8 semanas',
+      precio: 'Desde $25,000'
     },
     'Creación y Constitución de Empresas': {
       beneficios: ['Constitución en México y EE.UU.', 'Trámites fiscales y bancarios', 'Registro de marcas', 'Acompañamiento legal completo'],
@@ -982,4 +983,4 @@ function ServiceCard({ servicio, index }: { servicio: any; index: number }) {
       </div>
     </motion.div>
   );
-} 
+}

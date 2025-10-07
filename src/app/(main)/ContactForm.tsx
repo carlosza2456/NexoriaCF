@@ -157,16 +157,12 @@ export default function ContactForm() {
               className="w-full px-4 py-4 bg-white/10 border border-white/20 rounded-2xl text-white focus:outline-none focus:ring-2 focus:ring-[#FF6A00] focus:border-transparent transition-all duration-300 hover:bg-white/20 backdrop-blur-sm"
             >
               <option value="" className="bg-gray-800 text-white">Seleccione una opción</option>
-              <option value="Derecho Civil" className="bg-gray-800 text-white">Derecho Civil</option>
-              <option value="Derecho Penal" className="bg-gray-800 text-white">Derecho Penal</option>
-              <option value="Derecho Laboral" className="bg-gray-800 text-white">Derecho Laboral</option>
-              <option value="Derecho Mercantil" className="bg-gray-800 text-white">Derecho Mercantil</option>
-              <option value="Derecho Familiar" className="bg-gray-800 text-white">Derecho Familiar</option>
-              <option value="Derecho Corporativo" className="bg-gray-800 text-white">Derecho Corporativo</option>
-              <option value="Constitución de Empresas" className="bg-gray-800 text-white">Constitución de Empresas</option>
-              <option value="Compliance y Regulaciones" className="bg-gray-800 text-white">Compliance y Regulaciones</option>
-              <option value="Propiedad Intelectual" className="bg-gray-800 text-white">Propiedad Intelectual</option>
-              <option value="Otros Servicios Legales" className="bg-gray-800 text-white">Otros Servicios Legales</option>
+              <option value="Diseño de KPIs y Tableros de Gestión" className="bg-gray-800 text-white">📊 Diseño de KPIs y Tableros de Gestión</option>
+              <option value="Compliance Corporativo y Jurídico" className="bg-gray-800 text-white">⚖️ Compliance Corporativo y Jurídico</option>
+              <option value="Optimización de Procesos" className="bg-gray-800 text-white">🔄 Optimización de Procesos</option>
+              <option value="Cultura de Mejora y Liderazgo" className="bg-gray-800 text-white">👥 Cultura de Mejora y Liderazgo</option>
+              <option value="Desarrollo Web y Soluciones Digitales" className="bg-gray-800 text-white">💻 Desarrollo Web y Soluciones Digitales</option>
+              <option value="Creación y Constitución de Empresas" className="bg-gray-800 text-white">🚀 Creación y Constitución de Empresas</option>
             </select>
           </div>
 
