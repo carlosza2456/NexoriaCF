@@ -158,9 +158,8 @@ export default function ContactForm() {
             >
               <option value="" className="bg-gray-800 text-white">Seleccione una opción</option>
               <option value="Diseño de KPIs y Tableros de Gestión" className="bg-gray-800 text-white">📊 Diseño de KPIs y Tableros de Gestión</option>
-              <option value="Compliance Corporativo y Jurídico" className="bg-gray-800 text-white">⚖️ Compliance Corporativo y Jurídico</option>
+              <option value="Servicios Legales: Empresas y Personas" className="bg-gray-800 text-white">⚖️ Servicios Legales: Empresas y Personas</option>
               <option value="Optimización de Procesos" className="bg-gray-800 text-white">🔄 Optimización de Procesos</option>
-              <option value="Cultura de Mejora y Liderazgo" className="bg-gray-800 text-white">👥 Cultura de Mejora y Liderazgo</option>
               <option value="Desarrollo Web y Soluciones Digitales" className="bg-gray-800 text-white">💻 Desarrollo Web y Soluciones Digitales</option>
               <option value="Creación y Constitución de Empresas" className="bg-gray-800 text-white">🚀 Creación y Constitución de Empresas</option>
             </select>

@@ -15,22 +15,16 @@ export default function Home() {
       url: '/servicios/kpis-tableros'
     },
     {
-      title: 'Compliance Corporativo y Jurídico',
-      description: 'Evaluación de riesgos legales, fiscales, laborales y regulatorios con políticas internas.',
+      title: 'Servicios Legales: Empresas y Personas',
+      description: 'Constitución de empresas, y asesoría civil, mercantil y laboral para proteger tu patrimonio y operar en regla.',
       icon: '⚖️',
-      url: '/servicios/compliance'
+      url: '/servicios/servicios-legales'
     },
     {
       title: 'Optimización de Procesos',
       description: 'Mapeo y rediseño de procesos críticos eliminando duplicidades y fallas operativas.',
       icon: '🔄',
       url: '/servicios/optimizacion'
-    },
-    {
-      title: 'Cultura de Mejora y Liderazgo',
-      description: 'Desarrollo de líderes operativos con herramientas de gestión diaria y enfoque Lean.',
-      icon: '👥',
-      url: '/servicios/liderazgo'
     },
     {
       title: 'Desarrollo Web y Soluciones Digitales',
@@ -860,20 +854,15 @@ function ServiceCard({ servicio, index }: { servicio: any; index: number }) {
       tiempo: '2-4 semanas',
       precio: 'Desde $25,000'
     },
-    'Compliance Corporativo y Jurídico': {
-      beneficios: ['Evaluación de riesgos legales', 'Políticas internas y códigos de ética', 'Capacitación en gobernanza', 'Programas anticorrupción'],
-      tiempo: '1-3 meses',
-      precio: 'Desde $35,000'
+    'Servicios Legales: Empresas y Personas': {
+      beneficios: ['Constitución de empresas en México', 'Asesoría civil, mercantil y laboral', 'Protección patrimonial integral', 'Atención en todo México (remota)'],
+      tiempo: 'Según servicio',
+      precio: 'Desde $15,000'
     },
     'Optimización de Procesos': {
       beneficios: ['Mapeo de procesos críticos', 'Eliminación de duplicidades', 'Controles internos', 'Estándares de calidad'],
       tiempo: '2-6 semanas',
       precio: 'Desde $30,000'
-    },
-    'Cultura de Mejora y Liderazgo': {
-      beneficios: ['Desarrollo de líderes operativos', 'Herramientas de gestión diaria', 'Rituales de mejora continua', 'Enfoque Lean'],
-      tiempo: '1-2 meses',
-      precio: 'Desde $40,000'
     },
     'Desarrollo Web y Soluciones Digitales': {
       beneficios: ['Páginas web responsivas y modernas', 'Microaplicaciones personalizadas', 'Agentes de IA para automatización', 'Integración con sistemas existentes'],
